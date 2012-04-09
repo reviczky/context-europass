@@ -24,6 +24,11 @@
     mainfont={Tex Gyre Heros},
     title={ecvtitle},
     logo={europasslogo},
+    logowidth={23mm},
+    logooffset={10mm},
+    flag={},
+    flagwidth={10mm},
+    hrule={},
   ]
 
 % PDF info
@@ -56,7 +61,21 @@
   {}{\startreusableMPgraphic{logo}
        input \currentmoduleparameter{logo};
      \stopreusableMPgraphic
-     \scale[width=23mm]{\reuseMPgraphic{logo}}}
+     \scale[width=\currentmoduleparameter{logowidth}]{\reuseMPgraphic{logo}}}
+
+% Flag pictures of the EC can be found at
+%   http://europa.eu.int/abc/symbols/emblem/index_en.htm
+\doifdefinedelse{\currentmoduleparameter{flag}}
+  {}{\startreusableMPgraphic{flag}
+       input \currentmoduleparameter{flag};
+     \stopreusableMPgraphic
+     \scale[width=\currentmoduleparameter{flagwidth}]{\reuseMPgraphic{flag}}}
+
+% Page numbering
+\def\ecvtotpages{~/~\totalnumberofpages}
+% \def\ecvpage{\ecvpagekey~\pagenumber\ecvtotpages}
+
+% Page number
 
 \definestartstop[europecv]
 
