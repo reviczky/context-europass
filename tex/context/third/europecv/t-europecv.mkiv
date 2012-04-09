@@ -1,6 +1,6 @@
 %D \module
 %D   [     file=t-europecv,
-%D      version=2012.03.17,
+%D      version=2012.04.09,
 %D        title=\CONTEXT\ User Module,
 %D     subtitle=European curricula vitæ,
 %D       author={Adam Reviczky},
@@ -8,11 +8,47 @@
 %D    copyright={Adam Reviczky},
 %D      license=Public Domain]
 
-\writestatus{loading}{Europass: Curriculum Vitæ (ver: 2012.03.17)}
+%D CV models and instructions:
+%D   http://europass.cedefop.eu.int/htm/index.htm
+
+\writestatus{loading}{Europass: Curriculum Vitæ (ver: 2012.04.09)}
+
+\ctxloadluafile{t-europecv}{}
 
 \startmodule[europecv]
 \unprotect
 
+\setupmodule
+  [
+    language={en},
+    mainfont={Tex Gyre Heros},
+  ]
+
+% PDF info
+% \placebookmarks
+%   [title,subject]
+%   [force=yes]
+\setupinteraction
+  [state=start,
+   title={Europass},
+   author={ConTeXt (europecv)},
+   subtitle={Curriculum Vitæ},
+   keyword={europass}]
+
+\mainlanguage[\currentmoduleparameter{language}]
+\setuppapersize[A4][A4]
+
+% Set language
+% FIXME !!! -- http://bazaar.launchpad.net/~reviczky/context-beta/cont-tmf/view/head:/tex/context/base/lang-lab.mkiv
+% \currentlanguage
+
+% Set font
+\usemodule  [simplefonts]
+\setmainfont[\currentmoduleparameter{mainfont}][expansion=quality,protrusion=quality]
+
+% Europass logo
+
+\definestartstop[europecv]
 
 \protect
 \stopmodule
