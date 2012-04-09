@@ -22,6 +22,8 @@
   [
     language={en},
     mainfont={Tex Gyre Heros},
+    title={ecvtitle},
+    logo={europasslogo},
   ]
 
 % PDF info
@@ -46,8 +48,15 @@
 % Set font
 \usemodule  [simplefonts]
 \setmainfont[\currentmoduleparameter{mainfont}][expansion=quality,protrusion=quality]
+% helvetica, arial, narrow
 
 % Europass logo
+% \doifdefined{\currentmoduleparameter{logo}} -- broken
+\doifdefinedelse{\currentmoduleparameter{logo}}
+  {}{\startreusableMPgraphic{logo}
+       input \currentmoduleparameter{logo};
+     \stopreusableMPgraphic
+     \scale[width=23mm]{\reuseMPgraphic{logo}}}
 
 \definestartstop[europecv]
 
