@@ -1,0 +1,95 @@
+%D \module
+%D   [     file=t-europecv,
+%D      version=2013.09.30,
+%D        title=\CONTEXT\ User Module,
+%D     subtitle=European curricula vitæ,
+%D       author={Adam Reviczky},
+%D         date=\currentdate,
+%D    copyright={Adam Reviczky},
+%D      license=Public Domain]
+
+%D CV models and instructions:
+%D   http://europass.cedefop.europa.eu/en/documents/curriculum-vitae/examples
+%D   http://europass.cedefop.europa.eu/en/documents/curriculum-vitae/templates-instructions
+
+\unprotect
+
+\writestatus{loading}{Europass: Curriculum Vitæ (ver: 2013.09.30)}
+
+%\ctxloadluafile{t-europecv}
+
+\startmodule[\v!europecv]
+
+\setupmodule[]
+
+\definestartstop[europecv]
+
+% Labels
+\definelabelclass[europecv]
+
+% title:
+\setupeuropecvtext[\s!de][\v!title=DeTitle]
+\setupeuropecvtext[\s!en][\v!title=EnTitle]
+
+%\setupmodule
+%  [
+%    language={en},
+%    mainfont={Tex Gyre Heros},
+%    title={ecvtitle},
+%    logo={europasslogo},
+%    logowidth={23mm},
+%    logooffset={10mm},
+%    flag={},
+%    flagwidth={10mm},
+%    hrule={},
+%  ]
+
+% PDF info
+% \placebookmarks
+%   [title,subject]
+%   [force=yes]
+%\setupinteraction
+%  [state=start,
+%   title={Europass},
+%   author={ConTeXt (europecv)},
+%   subtitle={Curriculum Vitæ},
+%   keyword={europass}]
+
+%\mainlanguage[\currentmoduleparameter{language}]
+%\setuppapersize[A4][A4]
+
+% Set language
+%\writestatus{europecv}{\currentmoduleparameter{language} definitions}
+% FIXME !!! -- http://bazaar.launchpad.net/~reviczky/context-beta/cont-tmf/view/head:/tex/context/base/lang-lab.mkiv
+% \currentlanguage
+
+% Set font
+%\usemodule[simplefonts]
+%\setmainfont[\currentmoduleparameter{mainfont}][expansion=quality,protrusion=quality]
+% helvetica, arial, narrow
+
+% Europass logo
+% \doifdefined{\currentmoduleparameter{logo}} -- broken
+%\doifdefinedelse{\currentmoduleparameter{logo}}
+%  {}{\startreusableMPgraphic{logo}
+%       input \currentmoduleparameter{logo};
+%     \stopreusableMPgraphic
+%     \scale[width=\currentmoduleparameter{logowidth}]{\reuseMPgraphic{logo}}}
+
+% Flag pictures of the EC can be found at
+%   http://europa.eu/about-eu/basic-information/symbols/flag/index_en.htm
+%\doifdefinedelse{\currentmoduleparameter{flag}}
+%  {}{\startreusableMPgraphic{flag}
+%       input \currentmoduleparameter{flag};
+%     \stopreusableMPgraphic
+%     \scale[width=\currentmoduleparameter{flagwidth}]{\reuseMPgraphic{flag}}}
+
+% Page numbering
+%\def\ecvtotpages{~/~\totalnumberofpages}
+% \def\ecvpage{\ecvpagekey~\pagenumber\ecvtotpages}
+
+% Page number
+
+\stopmodule
+
+\protect \endinput
