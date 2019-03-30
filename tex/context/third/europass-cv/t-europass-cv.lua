@@ -1,6 +1,6 @@
 if not modules then modules = { } end modules ['europecv'] = {
     version   = 1.000,
-    comment   = "companion to t-europecv.mkiv",
+    comment   = "companion to t-europass-cv.mkiv",
     author    = "Adam Reviczky",
     copyright = "Adam Reviczky",
     license   = "Public Domain"
