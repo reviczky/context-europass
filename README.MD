@@ -1,20 +1,37 @@
 # ConTeXt module for Europass CV
 
-https://modules.contextgarden.net/
+This repository contains the source code of the **context-europass** third party module for creating [Europass](https://europass.cedefop.europa.eu/) (Curriculum vitae, European skills passport, Language passport, Cover letter) documents with the [ConTeXt](https://wiki.contextgarden.net/Main_Page) typesetting system using the [LuaTeX](http://www.luatex.org/) engine.
 
+Once completed, the module will be published and incorporated into the official third part repository at https://modules.contextgarden.net/.
+
+## Template Specifications
+
+The [PDF standards version 2.0](https://www.iso.org/obp/ui/#iso:std:iso:32000:-2:ed-1:v1:en) is used for the creation of the PDF document output (with the fallback version being [PDF 1.7](https://www.iso.org/obp/ui/#iso:std:iso:32000:-1:ed-1:v1:en)).
+
+Reference implementation is following and aligning to the Resources ([Templates and Guidelines](https://europass.cedefop.europa.eu/documents/curriculum-vitae/templates-instructions/templates/doc) as well as [Examples](https://europass.cedefop.europa.eu/documents/curriculum-vitae/examples)) found on the Europass site.
+
+Translations as supported by Europass are incorporated via [Lua](https://www.lua.org/) values.
+
+## Additional Features
+
+* Custom logo support
+* Summary Statement section
+* Date support with *locale*
 
 ## Europass
 
-https://europass.cedefop.europa.eu/
+The main site for Europass based documents is accessible via: https://europass.cedefop.europa.eu/
 
+The current verison of Europass CV is as of [12 December 2012](https://europass.cedefop.europa.eu/about/news?page=4).
 
 ## LaTeX modules
 
-https://www.devrandom.it/software/europasscv/
+For comparison, the following LaTeX modules are available:
 
-https://github.com/gsilano/EuropeCV/
+* https://www.devrandom.it/software/europasscv/
+* https://github.com/gsilano/EuropeCV/
 
 
 ## License
 
-https://creativecommons.org/share-your-work/public-domain/cc0/
+All content was created under the Creative Commons CC0 license: https://creativecommons.org/share-your-work/public-domain/cc0/
