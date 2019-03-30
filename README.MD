@@ -20,7 +20,7 @@ Translations as supported by Europass are incorporated via [Lua](https://www.lua
 
 ## Official Europass Website
 
-The main site for Europass based documents is accessible via [europass.cedefop.europa.eu](https://europass.cedefop.europa.eu/)
+The main site for Europass based documents is accessible via [europass.cedefop.europa.eu](https://europass.cedefop.europa.eu/).
 
 The current verison of Europass CV is as of [12 December 2012](https://europass.cedefop.europa.eu/about/news?page=4).
 
