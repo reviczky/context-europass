@@ -1,6 +1,6 @@
 # ConTeXt Module for Europass
 
-This repository contains the source code of the **context-europass** third party module for creating [Europass](https://europass.cedefop.europa.eu/) (Curriculum vitae, European skills passport, Language passport, Cover letter) documents with the [ConTeXt](https://wiki.contextgarden.net/Main_Page) typesetting system using the [LuaTeX](http://www.luatex.org/) engine.
+This repository contains the source code of the **context-europass** third party module for creating [Europass](https://europass.cedefop.europa.eu/) (Curriculum vitæ, European skills passport, Language passport, Cover letter) documents with the [ConTeXt](https://wiki.contextgarden.net/Main_Page) typesetting system using the [LuaTeX](http://www.luatex.org/) engine.
 
 Once completed, the module will be published and incorporated into the official third part repository at https://modules.contextgarden.net/.
 
