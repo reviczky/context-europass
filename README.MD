@@ -8,7 +8,7 @@ Once completed, the module will be published and incorporated into the official 
 
 The [PDF standards version 2.0](https://www.iso.org/obp/ui/#iso:std:iso:32000:-2:ed-1:v1:en) is used for the creation of the PDF document output (with the fallback version being [PDF 1.7](https://www.iso.org/obp/ui/#iso:std:iso:32000:-1:ed-1:v1:en)).
 
-Reference implementation is following and aligning to the Resources ([Templates and Guidelines](https://europass.cedefop.europa.eu/documents/curriculum-vitae/templates-instructions/templates/doc) as well as [Examples](https://europass.cedefop.europa.eu/documents/curriculum-vitae/examples)) found on the Europass site.
+Reference implementation for the [Europass CV](http://europass.cedefop.europa.eu/documents/curriculum-vitae) is following and aligning to the Resources ([Templates and Guidelines](https://europass.cedefop.europa.eu/documents/curriculum-vitae/templates-instructions/templates/doc) as well as [Examples](https://europass.cedefop.europa.eu/documents/curriculum-vitae/examples)) found on the Europass site.
 
 Translations as supported by Europass are incorporated via [Lua](https://www.lua.org/) values.
 
