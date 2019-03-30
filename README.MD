@@ -34,4 +34,4 @@ For comparison, the following LaTeX modules are available:
 
 ## License Details
 
-All content was created under the Creative Commons CC0 license: https://creativecommons.org/share-your-work/public-domain/cc0/
+All content was created under the Creative Commons CC0 1.0 license: https://creativecommons.org/share-your-work/public-domain/cc0/
