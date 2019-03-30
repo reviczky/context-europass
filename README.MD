@@ -1,4 +1,4 @@
-# ConTeXt module for Europass CV
+# ConTeXt Module for Europass
 
 This repository contains the source code of the **context-europass** third party module for creating [Europass](https://europass.cedefop.europa.eu/) (Curriculum vitae, European skills passport, Language passport, Cover letter) documents with the [ConTeXt](https://wiki.contextgarden.net/Main_Page) typesetting system using the [LuaTeX](http://www.luatex.org/) engine.
 
@@ -18,13 +18,13 @@ Translations as supported by Europass are incorporated via [Lua](https://www.lua
 * Summary Statement section
 * Date support with *locale*
 
-## Europass
+## Official Europass Website
 
 The main site for Europass based documents is accessible via: https://europass.cedefop.europa.eu/
 
 The current verison of Europass CV is as of [12 December 2012](https://europass.cedefop.europa.eu/about/news?page=4).
 
-## LaTeX modules
+## LaTeX Modules
 
 For comparison, the following LaTeX modules are available:
 
@@ -32,6 +32,6 @@ For comparison, the following LaTeX modules are available:
 * https://github.com/gsilano/EuropeCV/
 
 
-## License
+## License Details
 
 All content was created under the Creative Commons CC0 license: https://creativecommons.org/share-your-work/public-domain/cc0/
