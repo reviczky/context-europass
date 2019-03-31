@@ -1,21 +1,18 @@
 %D \module
-%D   [     file=t-europass-cv,
-%D      version=2012.04.09,
-%D        title=\CONTEXT\ User Module,
-%D     subtitle=European curricula vitæ,
+%D   [     file={t-europass-cv},
+%D      version={2019.03.31},
+%D        title={\CONTEXT\ User Module},
+%D     subtitle={European Curriculum Vitæ},
 %D       author={Adam Reviczky},
-%D         date=\currentdate,
+%D         date={\currentdate},
 %D    copyright={Adam Reviczky},
-%D      license=Public Domain]
+%D      license={'Public Domain'}]
 
-%D CV models and instructions:
-%D   http://europass.cedefop.eu.int/htm/index.htm
+\writestatus{loading}{ConTeXt Module | Europass: Curriculum Vitæ (2019.03.31)}
 
-\writestatus{loading}{Europass: Curriculum Vitæ (ver: 2012.04.09)}
+\ctxloadluafile{t-europass-cv}{}
 
-\ctxloadluafile{t-europecv}{}
-
-\startmodule[europecv]
+\startmodule[europass-cv]
 \unprotect
 
 \setupmodule
@@ -23,7 +20,7 @@
     language={en},
     mainfont={Tex Gyre Heros},
     title={ecvtitle},
-    logo={europasslogo},
+    logo={europass-cv-logo},
     logowidth={23mm},
     logooffset={10mm},
     flag={},
@@ -51,8 +48,8 @@
 % \currentlanguage
 
 % Set font
-\usemodule  [simplefonts]
-\setmainfont[\currentmoduleparameter{mainfont}][expansion=quality,protrusion=quality]
+%\usemodule  [simplefonts]
+%\setmainfont[\currentmoduleparameter{mainfont}][expansion=quality,protrusion=quality]
 % helvetica, arial, narrow
 
 % Europass logo
@@ -77,7 +74,8 @@
 
 % Page number
 
-\definestartstop[europecv]
+\definestartstop[europass-cv]
 
 \protect
 \stopmodule
+\endinput

@@ -1,4 +1,4 @@
-if not modules then modules = { } end modules ['europecv'] = {
+if not modules then modules = { } end modules ['europass-cv'] = {
     version   = 1.000,
     comment   = "companion to t-europass-cv.mkiv",
     author    = "Adam Reviczky",
@@ -14,7 +14,7 @@ local data      = languages.data
 
 data.labels={
   module={
-   % hidden=true,
+   -- hidden=true,
    labels={
     bg="Bulgarian definitions",
     ca="Catalan definitions",
@@ -82,7 +82,7 @@ data.labels={
     tr="",
    },
   },
-% Personal information
+-- Personal information
   info={
    labels={
     bg="",
@@ -423,7 +423,7 @@ data.labels={
     tr="",
    },
   },
-% Employment
+-- Employment
   occupation={
    labels={
     bg="",
@@ -458,7 +458,7 @@ data.labels={
     tr="",
    },
   },
-% Work
+-- Work
   experience={
    labels={
     bg="",
@@ -663,7 +663,7 @@ data.labels={
     tr="",
    },
   },
-% Education
+-- Education
   education={
    labels={
     bg="",
@@ -834,7 +834,7 @@ data.labels={
     tr="",
    },
   },
-% Personal skills
+-- Personal skills
   skills={
    labels={
     bg="",
@@ -1617,7 +1617,7 @@ data.labels={
     tr="",
    },
   },
-% Additional information
+-- Additional information
   additional={
    labels={
     bg="",
@@ -1652,7 +1652,7 @@ data.labels={
     tr="",
    },
   },
-% Annexes
+-- Annexes
   annex={
    labels={
     bg="",
@@ -1687,7 +1687,7 @@ data.labels={
     tr="",
    },
   },
-% Grid
+-- Grid
   grid={
    labels={
     bg="",
@@ -2776,7 +2776,7 @@ data.labels={
     tr="",
    },
   },
-% Footer
+-- Footer
   page={
    labels={
     bg="",
@@ -2913,6 +2913,4 @@ data.labels={
     tr="",
    },
   },
- },
 }
-

@@ -34,6 +34,8 @@ For comparison, the following LaTeX modules are available:
 
 ## License Details
 
-All content was created under the Creative Commons CC0 1.0 license:
+Source code and content of the module has been put into the [public domain](https://creativecommons.org/share-your-work/public-domain/pdm/).
+
+All artwork was created under the Creative Commons CC0 1.0 license:
 
 https://creativecommons.org/share-your-work/public-domain/cc0/
