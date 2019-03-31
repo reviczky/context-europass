@@ -8,71 +8,70 @@
 %D    copyright={Adam Reviczky},
 %D      license={'Public Domain'}]
 
+%% http://wiki.contextgarden.net/Module_template
+
+% tracker messages
 \writestatus{loading}{ConTeXt Module | Europass: Curriculum Vitæ (2019.03.31)}
+\writestatus{europass}{interface: \currentlanguage}
 
 \ctxloadluafile{t-europass-cv}{}
 
 \startmodule[europass-cv]
 \unprotect
 
+% default settings
 \setupmodule
   [
-    language={en},
-    mainfont={Tex Gyre Heros},
-    title={ecvtitle},
-    logo={europass-cv-logo},
-    logowidth={23mm},
-    logooffset={10mm},
-    flag={},
-    flagwidth={10mm},
-    hrule={},
+           logo=europass-cv-logo
   ]
 
-% PDF info
-% \placebookmarks
-%   [title,subject]
-%   [force=yes]
+% default values
+\setgvariables[europass]
+  [        name={First Last},
+        address={Flat, Street, City (Country)},
+      telephone={+(00) 00 000 00000},
+          email={first.last@company.com},
+            sex={gender},
+          birth={d=1,m=1,y=2000},
+    nationality={nationality},
+  ]
+
+% PDF 2.0
+\directlua{pdf.setmajorversion(2)}
+\directlua{pdf.setminorversion(0)}
+
+% PDF properties
+\enabledirectives[interaction.identity.preroll]
 \setupinteraction
-  [state=start,
-   title={Europass},
-   author={ConTeXt (europecv)},
-   subtitle={Curriculum Vitæ},
-   keyword={europass}]
+  [
+          state=start,
+          title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\getvariable{europass}{name}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}},
+       subtitle={\getvariable{europass}{name} Europass CV},
+         author={ConTeXt Europass CV},
+        keyword={Europass,CV,Cedefop}
+  ]
 
-\mainlanguage[\currentmoduleparameter{language}]
-\setuppapersize[A4][A4]
+% PDF bookmarks
+\placebookmarks[title,subject][force=yes]
 
-% Set language
-\writestatus{europecv}{\currentmoduleparameter{language} definitions}
-% FIXME !!! -- http://bazaar.launchpad.net/~reviczky/context-beta/cont-tmf/view/head:/tex/context/base/lang-lab.mkiv
-% \currentlanguage
+% default paramenters
+\mainlanguage[en]
+\setuppapersize[A4,portrait][A4,portrait]
+\setupbodyfont[heros]
+\definefontfeature[default][default][protrusion=quality,expansion=quality]
+\setupalign[hz,hanging]
+\setuppagenumbering[location=]
 
-% Set font
-%\usemodule  [simplefonts]
-%\setmainfont[\currentmoduleparameter{mainfont}][expansion=quality,protrusion=quality]
-% helvetica, arial, narrow
+% environment products
+%\environment europass-cv-style
+%\environment europass-cv-lang
 
-% Europass logo
-% \doifdefined{\currentmoduleparameter{logo}} -- broken
+% europass logo
+% \doifdefined{\currentmoduleparameter{logo}}{} -- FIXME
 \doifdefinedelse{\currentmoduleparameter{logo}}
-  {}{\startreusableMPgraphic{logo}
-       input \currentmoduleparameter{logo};
-     \stopreusableMPgraphic
-     \scale[width=\currentmoduleparameter{logowidth}]{\reuseMPgraphic{logo}}}
-
-% Flag pictures of the EC can be found at
-%   http://europa.eu.int/abc/symbols/emblem/index_en.htm
-\doifdefinedelse{\currentmoduleparameter{flag}}
-  {}{\startreusableMPgraphic{flag}
-       input \currentmoduleparameter{flag};
-     \stopreusableMPgraphic
-     \scale[width=\currentmoduleparameter{flagwidth}]{\reuseMPgraphic{flag}}}
-
-% Page numbering
-\def\ecvtotpages{~/~\totalnumberofpages}
-% \def\ecvpage{\ecvpagekey~\pagenumber\ecvtotpages}
-
-% Page number
+  {}
+  {\startreusableMPgraphic{logo} input \currentmoduleparameter{logo}; \stopreusableMPgraphic}
+\scale[width=23mm]{\reuseMPgraphic{logo}}
 
 \definestartstop[europass-cv]
 

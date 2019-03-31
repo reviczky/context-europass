@@ -1,3 +1,5 @@
+%% https://europa.eu/european-union/about-eu/symbols/flag_en
+
 beginfig(1);
 % linecap := butt;
 % linejoin := mitered;
