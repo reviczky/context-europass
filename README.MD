@@ -15,7 +15,6 @@ Translations as supported by Europass are incorporated via [Lua](https://www.lua
 ## Additional Features
 
 * Custom logo support
-* Summary Statement section
 * Date support with *locale*
 
 ## Official Europass Website

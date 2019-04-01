@@ -23,12 +23,14 @@
 % default settings
 \setupmodule
   [
-           logo=europass-cv-logo
+       mainfont=heros
   ]
 
 % default values
 \setgvariables[europass]
-  [        name={First Last},
+  [
+           logo=europass-cv-logo,
+           name={First Last},
         address={Flat, Street, City (Country)},
       telephone={+(00) 00 000 00000},
           email={first.last@company.com},
@@ -68,11 +70,21 @@
 \environment t-europass-cv-lang
 
 % europass logo
-% \doifdefined{\currentmoduleparameter{logo}}{} -- FIXME
-\doifdefinedelse{\currentmoduleparameter{logo}}
+% \doifdefined{\getvariable{europass}{logo}}{} -- FIXME
+\doifdefinedelse{\getvariable{europass}{logo}}
   {}
-  {\startreusableMPgraphic{logo} input \currentmoduleparameter{logo}; \stopreusableMPgraphic}
-\scale[width=23mm]{\reuseMPgraphic{logo}}
+  {
+    \setupMPvariables[logo][input=\getvariable{europass}{logo}]
+    \startuniqueMPgraphic{logo}{scale}
+    input \MPvar{input};
+    currentpicture := currentpicture scaled \MPvar{scale};
+    \stopuniqueMPgraphic
+  }
+
+\startsetups[headerlogo]
+\startframed[frame=off,location={line}] \uniqueMPgraphic{logo}{scale=0.175} \stopframed
+\stopsetups
+\setupheadertexts[margin][\directsetup{headerlogo}][]
 
 \definestartstop[europass-cv]
 
