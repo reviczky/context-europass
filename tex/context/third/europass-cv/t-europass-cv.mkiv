@@ -77,12 +77,12 @@
     \setupMPvariables[logo][input=\getvariable{europass}{logo}]
     \startuniqueMPgraphic{logo}{size}
     input \MPvar{input};
-    currentpicture := currentpicture xsized \MPvar{size};
+    currentpicture := currentpicture ysized \MPvar{size};
     \stopuniqueMPgraphic
   }
 
 \startsetups[headerlogo]
-\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=45mm} \stopframed
+\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=13mm} \stopframed
 \stopsetups
 \setupheadertexts[margin][\directsetup{headerlogo}][]
 
