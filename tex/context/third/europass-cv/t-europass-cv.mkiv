@@ -23,7 +23,9 @@
 % default settings
 \setupmodule
   [
-       mainfont=heros
+       mainfont=heros,
+           date=yes,% -- yes/no
+      copyright=yes,% -- yes/no
   ]
 
 % default values
@@ -47,11 +49,14 @@
 \enabledirectives[interaction.identity.preroll]
 \setupinteraction
   [
-          state=start,
-          title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\getvariable{europass}{name}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}},
-       subtitle={\getvariable{europass}{name} Europass CV},
-         author={ConTeXt Europass CV},
-        keyword={Europass,CV,Cedefop}, % -- PDF 1.7
+           state=start,
+           title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\getvariable{europass}{name}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}},
+        subtitle={\getvariable{europass}{name} Europass CV},
+          author={ConTeXt Europass CV},
+         keyword={Europass,CV,Cedefop}, % -- PDF 1.7
+           color=europasscyan,
+   contrastcolor=darkblue,
+           style=normal,
   ]
 
 % PDF bookmarks
@@ -60,7 +65,10 @@
 % default paramenters
 \mainlanguage[en]
 \setuppapersize[A4,portrait][A4,portrait]
-\setupbodyfont[heros]
+%\setupbodyfont[heros,10pt,ss]
+\doifdefinedelse{\currentmoduleparameter{mainfont}}
+  {\setupbodyfont[heros,10pt,ss]}
+  {\setupbodyfont[\currentmoduleparameter{mainfont},10pt,ss]}
 \definefontfeature[default][default][protrusion=quality,expansion=quality]
 \setupalign[hz,hanging]
 \setuppagenumbering[location=]
@@ -83,9 +91,10 @@
 
 \startsetups[headerlogo]
 \doifelse{\pagenumber}{1}
-  {\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=13mm} \stopframed}
-  {\startframed[frame=off,offset=0mm,strut=no,align={right,lohi},loffset=10mm,location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=8mm} \stopframed}
+  {\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},boffset=3mm,location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=13mm} \stopframed}
+  {\startframed[frame=off,offset=0mm,strut=no,align={right,lohi},loffset=10mm,boffset=1mm,location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=8mm} \stopframed}
 \stopsetups
+
 \setupheadertexts[margin][\directsetup{headerlogo}][]
 
 \definestartstop[europass-cv]
