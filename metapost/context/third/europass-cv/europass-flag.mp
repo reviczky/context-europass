@@ -16,9 +16,11 @@ beginfig(1);
 drawoptions (withcolor (0.000000,0.000000,0.000000));
 
 % border
-pickup pencircle scaled 1.000000bp;
+% pickup pencircle scaled 1.000000bp;
+pickup pencircle sized 1.000000bp;
 draw (180.695007,526.296997)--(455.539001,526.296997)--(455.539001,709.526978)--(180.695007,709.526978)--cycle;
-pickup pencircle scaled 0.000000bp;
+% pickup pencircle scaled 0.000000bp;
+pickup pencircle sized 0.000000bp;
 
 %drawoptions (withcolor (1.000000,1.000000,1.000000));
 %drawoptions (withcolor (1.000000,0.901961,0.000000));

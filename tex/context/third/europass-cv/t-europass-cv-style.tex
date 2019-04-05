@@ -17,4 +17,13 @@
 
 \showframe
 
+% europass header
+\startsetups[headertext]
+\startframed[frame=off,offset=0mm,strut=no,align={right,lohi},location={top},height={\headerheight},width={\makeupwidth}]
+\startcolor[europasscyan] \europasstext{resume} \stopcolor
+\stopframed
+\stopsetups
+
+\setupheadertexts[\directsetup{headertext}][][\directsetup{headertext}][]
+
 \stopenvironment

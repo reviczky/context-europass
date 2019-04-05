@@ -13,7 +13,7 @@
 % tracker messages
 \writestatus{loading}{ConTeXt Module | Europass: Curriculum Vitæ (2019.03.31)}
 \writestatus{europass}{interface: \currentlanguage}
-%\writestatus{europass}{\ctxlua{context(languages.data.labels.texts["\currentlanguage"])}}
+%\writestatus{europass}{\ctxlua{context(languages.data.labels.texts["\currentlanguage"])}} -- FIXME
 
 \ctxloadluafile{t-europass-cv}{}
 
@@ -51,7 +51,7 @@
           title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\getvariable{europass}{name}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}},
        subtitle={\getvariable{europass}{name} Europass CV},
          author={ConTeXt Europass CV},
-        keyword={Europass,CV,Cedefop}
+        keyword={Europass,CV,Cedefop}, % -- PDF 1.7
   ]
 
 % PDF bookmarks
@@ -75,14 +75,14 @@
   {}
   {
     \setupMPvariables[logo][input=\getvariable{europass}{logo}]
-    \startuniqueMPgraphic{logo}{scale}
+    \startuniqueMPgraphic{logo}{size}
     input \MPvar{input};
-    currentpicture := currentpicture scaled \MPvar{scale};
+    currentpicture := currentpicture xsized \MPvar{size};
     \stopuniqueMPgraphic
   }
 
 \startsetups[headerlogo]
-\startframed[frame=off,location={line}] \uniqueMPgraphic{logo}{scale=0.175} \stopframed
+\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=45mm} \stopframed
 \stopsetups
 \setupheadertexts[margin][\directsetup{headerlogo}][]
 
