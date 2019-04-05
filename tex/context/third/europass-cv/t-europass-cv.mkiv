@@ -82,7 +82,9 @@
   }
 
 \startsetups[headerlogo]
-\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=13mm} \stopframed
+\doifelse{\pagenumber}{1}
+  {\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=13mm} \stopframed}
+  {\startframed[frame=off,offset=0mm,strut=no,align={right,lohi},loffset=10mm,location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=8mm} \stopframed}
 \stopsetups
 \setupheadertexts[margin][\directsetup{headerlogo}][]
 
