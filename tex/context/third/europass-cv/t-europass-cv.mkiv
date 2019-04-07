@@ -114,14 +114,19 @@
   \blank[line,force]
 }
 
+% europass job applied for
+\def\europassjob{\dosingleempty\doeuropassjob}
+\long\def\europassjob[#1] {%
+  \europasssmalltext[\tf\WORD{\europasstext{job_applied_for}}][\tfb{#1}]
+} % -- Argument has an extra }
 % europass work experience
-\long\def\europassexperience{\europassbar[\europasstext{experience}]
+\long\def\europassexperience{\europassbar[\europasstext{work_experience}]
 } % -- Argument has an extra }
 % europass education and training
-\long\def\europasseducation{\europassbar[\europasstext{education}]
+\long\def\europasseducation{\europassbar[\europasstext{education_and_training}]
 } % -- Argument has an extra }
 % europass personal skills
-\long\def\europassskills{\europassbar[\europasstext{skills}]
+\long\def\europassskills{\europassbar[\europasstext{personal_skills}]
 } % -- Argument has an extra }
 
 \definestartstop[europass-cv]
