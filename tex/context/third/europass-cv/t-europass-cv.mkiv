@@ -100,7 +100,8 @@
 \long\def\doeuropassbar[#1] {%
 % -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
   \blank[line,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
-    \inmargin{\startcolor[europassdarkblue] \tf\WORD{#1} \stopcolor} {\startcolor[europasscyan] \setupthinrules[depth=1pt]\startoverlay{\strut\blackrule[height=0pt,width=\dimexpr\textwidth-9pt\relax]\blacksquare}{\strut\blackrule[depth=1pt,height=0.1pt,width=\dimexpr\textwidth-1.4pt\relax]\blackrule[depth=0pt,height=0pt,width=0.1pt]}\stopoverlay \stopcolor} \par
+    \inmargin{\startcolor[europassdarkblue] \tf\WORD{#1} \stopcolor}
+    {\startcolor[europasscyan] \setupthinrules[depth=1pt]\startoverlay{\strut\blackrule[height=0pt,width=\dimexpr\textwidth-9pt\relax]\blacksquare}{\strut\blackrule[depth=1pt,height=0.1pt,width=\dimexpr\textwidth-1.4pt\relax]\blackrule[depth=0pt,height=0pt,width=0.1pt]}\stopoverlay \stopcolor} \par
   \blank[line,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
 }
 
@@ -108,9 +109,17 @@
 \def\europasssmalltext{\dodoubleempty\doeuropasssmalltext}
 \long\def\doeuropasssmalltext[#1][#2] {%
   \blank[line,force]
-    \inmargin{\startcolor[europassdarkblue] \tf\Word{#1} \stopcolor} {\startcolor[europassdarkgray] #2 \stopcolor} \par
+    \inmargin{\startcolor[europassdarkblue] \tf\Word {#1} \stopcolor}
+    {\startcolor[europassdarkgray] {#2} \stopcolor} \par
   \blank[line,force]
 }
+
+% europass work experience
+\long\def\europassexperience{\europassbar[\europasstext{experience}]
+} % -- Argument has an extra }
+% europass education and training
+\long\def\europasseducation{\europassbar[\europasstext{education}]
+} % -- Argument has an extra }
 
 \definestartstop[europass-cv]
 
