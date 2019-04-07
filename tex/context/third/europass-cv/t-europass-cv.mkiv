@@ -26,6 +26,7 @@
        mainfont=heros,
            date=yes,% -- yes/no
       copyright=yes,% -- yes/no
+        pdfname={First Last},
   ]
 
 % default values
@@ -50,8 +51,8 @@
 \setupinteraction
   [
            state=start,
-           title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\getvariable{europass}{name}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}},
-        subtitle={\getvariable{europass}{name} Europass CV},
+           title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\currentmoduleparameter{pdfname}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}},
+        subtitle={\currentmoduleparameter{pdfname} Europass CV},
           author={ConTeXt Europass CV},
          keyword={Europass,CV,Cedefop}, % -- PDF 1.7
            color=europasscyan,
@@ -65,7 +66,6 @@
 % default paramenters
 \mainlanguage[en]
 \setuppapersize[A4,portrait][A4,portrait]
-%\setupbodyfont[heros,10pt,ss]
 \doifdefinedelse{\currentmoduleparameter{mainfont}}
   {\setupbodyfont[heros,10pt,ss]}
   {\setupbodyfont[\currentmoduleparameter{mainfont},10pt,ss]}
@@ -81,13 +81,11 @@
 % \doifdefined{\getvariable{europass}{logo}}{} -- FIXME
 \doifdefinedelse{\getvariable{europass}{logo}}
   {}
-  {
-    \setupMPvariables[logo][input=\getvariable{europass}{logo}]
-    \startuniqueMPgraphic{logo}{size}
-    input \MPvar{input};
-    currentpicture := currentpicture ysized \MPvar{size};
-    \stopuniqueMPgraphic
-  }
+  {\setupMPvariables[logo][input=\getvariable{europass}{logo}]
+   \startuniqueMPgraphic{logo}{size}
+   input \MPvar{input};
+   currentpicture := currentpicture ysized \MPvar{size};
+   \stopuniqueMPgraphic}
 
 \startsetups[headerlogo]
 \doifelse{\pagenumber}{1}
@@ -96,6 +94,23 @@
 \stopsetups
 
 \setupheadertexts[margin][\directsetup{headerlogo}][]
+
+% europass bar -- LatinModernMath-Regular
+\def\europassbar{\dosingleempty\doeuropassbar}
+\long\def\doeuropassbar[#1] {%
+% -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
+  \blank[line,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
+    \inmargin{\startcolor[europassdarkblue] \tf\WORD{#1} \stopcolor} {\startcolor[europasscyan] \setupthinrules[depth=1pt]\startoverlay{\strut\blackrule[height=0pt,width=\dimexpr\textwidth-9pt\relax]\blacksquare}{\strut\blackrule[depth=1pt,height=0.1pt,width=\dimexpr\textwidth-1.4pt\relax]\blackrule[depth=0pt,height=0pt,width=0.1pt]}\stopoverlay \stopcolor} \par
+  \blank[line,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
+}
+
+% europass small text
+\def\europasssmalltext{\dodoubleempty\doeuropasssmalltext}
+\long\def\doeuropasssmalltext[#1][#2] {%
+  \blank[line,force]
+    \inmargin{\startcolor[europassdarkblue] \tf\Word{#1} \stopcolor} {\startcolor[europassdarkgray] #2 \stopcolor} \par
+  \blank[line,force]
+}
 
 \definestartstop[europass-cv]
 

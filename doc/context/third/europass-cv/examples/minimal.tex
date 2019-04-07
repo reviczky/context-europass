@@ -1,7 +1,73 @@
-\usemodule[europass-cv]
+%% Set Name for PDF Properties
+\def\name{First Last}
+\usemodule[europass-cv][pdfname={\name}]
 
+% \mainlanguage[bg]
+% \mainlanguage[cs]
+% \mainlanguage[da]
+% \mainlanguage[de]
+% \mainlanguage[gr]
 \mainlanguage[en]
+% \mainlanguage[es]
+% \mainlanguage[et]
+% \mainlanguage[fi]
+% \mainlanguage[fr]
+% \mainlanguage[ga]
+% \mainlanguage[hr]
+% \mainlanguage[hu]
+% \mainlanguage[is]
+% \mainlanguage[it]
+% \mainlanguage[lt]
+% \mainlanguage[lv]
+% \mainlanguage[me]
+% \mainlanguage[mk]
+% \mainlanguage[mt]
+% \mainlanguage[nb]
+% \mainlanguage[nl]
+% \mainlanguage[pl]
+% \mainlanguage[pt]
+% \mainlanguage[ro]
+% \mainlanguage[sk]
+% \mainlanguage[sl]
+% \mainlanguage[sr]
+% \mainlanguage[sv]
+% \mainlanguage[tr]
+% \mainlanguage[uk]
+
+%% Global variables for CV
+\setvariables[europass][name={\name}]
 
 \starttext
 % All CV headings/fields are optional. Remove any fields left empty.
+
+%% Work Experience
+\europassbar[{Work Experience}]
+\europasssmalltext[{Test}][{Text}]
+
+%% Education and Training
+\europassbar[{Education And Training}]
+\europasssmalltext[{Test}][{Text}]
+
+%% Personal Skills
+% Remove any fields left empty.
+\europassbar[{Personal Skills}]
+% Replace with mother tongue(s).
+% Example: English
+% Do not overestimate your level, which may be checked if you are interviewed!
+\europasssmalltext[{Mother tongue(s)}][{English}]
+% Replace with driving licence category/-ies.
+% Example: B
+\europasssmalltext[{Driving licence}][{B}]
+
+%% Additional Information
+\europassbar[{Additional Information}]
+\europasssmalltext[{Test}][{Text}]
+
+%% Annexes
+\europassbar[{Annexes}]
+\europasssmalltext[{Test}][{Text}]
+
+% pagebreak
+\page[yes]
+
 \stoptext
