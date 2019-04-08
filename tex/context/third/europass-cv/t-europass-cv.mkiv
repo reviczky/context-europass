@@ -73,6 +73,8 @@
 \setupalign[hz,hanging]
 \setuppagenumbering[location=]
 
+\definestartstop[europasscv][before={\ \vskip-\lineheight},style=normal]
+
 % environment products
 \environment t-europass-cv-style
 \environment t-europass-cv-lang
@@ -108,12 +110,21 @@
 % europass small text
 \def\europasssmalltext{\dodoubleempty\doeuropasssmalltext}
 \long\def\doeuropasssmalltext[#1][#2] {%
-  \blank[line,force]
+% -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
+  \blank[line] % \vbox to \lineheight{}\blank[samepage, -halfline]
     \inmargin{\startcolor[europassdarkblue] \tf\Word {#1} \stopcolor}
     {\startcolor[europassdarkgray] {#2} \stopcolor} \par
   \blank[line,force]
 }
 
+% europass personal information
+\long\def\europasspersonal{%
+  \europasssmalltext[\tf\WORD{\europasstext{personal_information}}][{\blank[back,line]\tfb{\getvariable{europass}{name}}}]
+  \blank[back,halfline]
+  \getvariable{europass}{address} \par
+  \getvariable{europass}{email} \par
+  \blank[line]
+} % -- Argument has an extra }
 % europass job applied for
 \def\europassjob{\dosingleempty\doeuropassjob}
 \long\def\europassjob[#1] {%
@@ -128,8 +139,6 @@
 % europass personal skills
 \long\def\europassskills{\europassbar[\europasstext{personal_skills}]
 } % -- Argument has an extra }
-
-\definestartstop[europass-cv]
 
 \protect
 \stopmodule

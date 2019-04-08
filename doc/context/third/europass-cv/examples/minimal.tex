@@ -35,10 +35,20 @@
 % \mainlanguage[uk]
 
 %% Global variables for CV
-\setvariables[europass][name={\name}]
+\setvariables
+  [europass]
+  [   name={\name}, % -- see name definition at line 1!
+   address={Flat, Street, City (Country)},
+     email={first.last@company.com}]
 
 \starttext
+\starteuropasscv
 % All CV headings/fields are optional. Remove any fields left empty.
+
+% Content
+
+%% Personal Information
+\europasspersonal
 
 %% Job Applied For
 % This heading gives an immediate overview of the purpose of your application. Delete non relevant headings in the left column. Example: Human Resources Assistant (ref. 562/2013)
@@ -74,4 +84,7 @@
 % pagebreak
 \page[yes]
 
+Content
+
+\stopeuropasscv
 \stoptext
