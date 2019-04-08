@@ -101,29 +101,31 @@
 \def\europassbar{\dosingleempty\doeuropassbar}
 \long\def\doeuropassbar[#1] {%
 % -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
-  \blank[line,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
+  \blank[halfline,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
     \inmargin{\startcolor[europassdarkblue] \tf\WORD{#1} \stopcolor}
     {\startcolor[europasscyan] \setupthinrules[depth=1pt]\startoverlay{\strut\blackrule[height=0pt,width=\dimexpr\textwidth-9pt\relax]\blacksquare}{\strut\blackrule[depth=1pt,height=0.1pt,width=\dimexpr\textwidth-1.4pt\relax]\blackrule[depth=0pt,height=0pt,width=0.1pt]}\stopoverlay \stopcolor} \par
-  \blank[line,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
+  \blank[halfline,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
 }
 
 % europass small text
 \def\europasssmalltext{\dodoubleempty\doeuropasssmalltext}
 \long\def\doeuropasssmalltext[#1][#2] {%
 % -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
-  \blank[line] % \vbox to \lineheight{}\blank[samepage, -halfline]
+  \blank[halfline] % \vbox to \lineheight{}\blank[samepage, -halfline]
     \inmargin{\startcolor[europassdarkblue] \tf\Word {#1} \stopcolor}
     {\startcolor[europassdarkgray] {#2} \stopcolor} \par
-  \blank[line,force]
+  \blank[halfline,force]
 }
 
 % europass personal information
 \long\def\europasspersonal{%
-  \europasssmalltext[\tf\WORD{\europasstext{personal_information}}][{\blank[back,line]\tfb{\getvariable{europass}{name}}}]
+  \europasssmalltext[\tf\WORD{\europasstext{personal_information}}][{\blank[back,halfline]\tfb{\getvariable{europass}{name}}}]
   \blank[back,halfline]
+  \startcolor[europassdarkgray]
   \getvariable{europass}{address} \par
   \getvariable{europass}{email} \par
-  \blank[line]
+  \stopcolor
+  \blank[halfline]
 } % -- Argument has an extra }
 % europass job applied for
 \def\europassjob{\dosingleempty\doeuropassjob}
