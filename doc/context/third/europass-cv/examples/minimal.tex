@@ -37,9 +37,16 @@
 %% Global variables for CV
 \setvariables
   [europass]
-  [   name={\name}, % -- see name definition at line 1!
-   address={Flat, Street, City (Country)},
-     email={first.last@company.com}]
+  [
+          name={\name},              % -- see name definition at line 1!
+       address={Flat, Street, City (Country)}, % -- remove to disable
+     telephone={+(00) 00 000 00000}, % -- remove to disable
+         email={revadam@gnome.org},  % -- remove to disable
+            im={username},           % -- remove to disable
+           sex={gender},             % -- remove to disable
+         birth={d=1,m=1,y=2000},     % -- remove to disable
+   nationality={nationality},        % -- remove to disable
+  ]
 
 \starttext
 \starteuropasscv
@@ -50,6 +57,7 @@
 
 %% Job Applied For
 % This heading gives an immediate overview of the purpose of your application. Delete non relevant headings in the left column. Example: Human Resources Assistant (ref. 562/2013)
+% \europasssmalltext[{Job Applied For}][{Chief Information Security Officer / CISO}]
 \europassjob[{Chief Information Security Officer / CISO}]
 
 %% Work Experience
@@ -72,11 +80,11 @@
 \europasssmalltext[{Driving licence}][{B}]
 
 %% Additional Information
-\europassbar[{Additional Information}]
+\europassinformation
 \europasssmalltext[{Test}][{Text}]
 
 %% Annexes
-\europassbar[{Annexes}]
+\europassannex
 \europasssmalltext[{Test}][{Text}]
 
 % pagebreak

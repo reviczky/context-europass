@@ -24,6 +24,9 @@
 \definecolor[europasslightgray][c=0,m=0,y=0,k=0.07]
 \definecolor[europassdarkgray] [c=0,m=0.08,y=0.11,k=0.75]
 
+% units
+% \definehspace[smallmedium][.75em]
+
 % URL
 \useURL[europass][https://europass.cedefop.europa.eu][][https://europass.cedefop.europa.eu]
 
@@ -56,7 +59,7 @@
 \doifelse{\currentmoduleparameter{date}}{yes}
   {\startsetups[footerdate]
   \startframed[frame=off,offset=0mm,strut=no,width=45mm,align=right]
-  \startcolor[europasscyan] \tfx \europasstext{date} \stopcolor
+  \startcolor[europasscyan] \tfx \europasstext{date} \stopcolor % \currentdate[d,{/},M,{/},yy]
   \stopframed
   \stopsetups}
   {\startsetups[footerdate]\stopsetups}
