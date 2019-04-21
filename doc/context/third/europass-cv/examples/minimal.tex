@@ -1,6 +1,6 @@
 %% Set Name for PDF Properties
 \def\name{First Last}
-\usemodule[europass-cv][pdfname={\name}]
+\usemodule [europass-cv] [pdfname={\name}]
 
 % \mainlanguage[bg]
 % \mainlanguage[cs]
@@ -34,9 +34,12 @@
 % \mainlanguage[tr]
 % \mainlanguage[uk]
 
-%% Global variables for CV
-\setvariables
-  [europass]
+\starttext
+\starteuropasscv
+% All CV headings/fields are optional. Remove any fields left empty.
+
+%% Personal Information
+\europasspersonal
   [
           name={\name},                  % -- see name definition at line 1!
        address={Flat, Street, City (Country)}, % -- remove to disable
@@ -48,13 +51,6 @@
    nationality={nationality},            % -- remove to disable
   ]
 
-\starttext
-\starteuropasscv
-% All CV headings/fields are optional. Remove any fields left empty.
-
-%% Personal Information
-\europasspersonal
-
 %% Job Applied For
 % This heading gives an immediate overview of the purpose of your application. Delete non relevant headings in the left column. Example: Human Resources Assistant (ref. 562/2013)
 % \europasssmalltext[{Job Applied For}][{Chief Information Security Officer / CISO}]
@@ -62,11 +58,11 @@
 
 %% Work Experience
 \europassexperience
-\europasssmalltext[{Test}][{Text}]
+\europasssmalltext [{Test}] [{Text}]
 
 %% Education and Training
 \europasseducation
-\europasssmalltext[{Test}][{Text}]
+\europasssmalltext [{Test}] [{Text}]
 
 %% Personal Skills
 % Remove any fields left empty.
@@ -74,18 +70,18 @@
 % Replace with mother tongue(s).
 % Example: English
 % Do not overestimate your level, which may be checked if you are interviewed!
-\europasssmalltext[{Mother tongue(s)}][{English}]
+\europasssmalltext [{Mother tongue(s)}] [{English}]
 % Replace with driving licence category/-ies.
 % Example: B
-\europasssmalltext[{Driving licence}][{B}]
+\europasssmalltext [{Driving licence}] [{B}]
 
 %% Additional Information
 \europassinformation
-\europasssmalltext[{Test}][{Text}]
+\europasssmalltext [{Test}] [{Text}]
 
 %% Annexes
 \europassannex
-\europasssmalltext[{Test}][{Text}]
+\europasssmalltext [{Test}] [{Text}]
 
 % pagebreak
 \page[yes]

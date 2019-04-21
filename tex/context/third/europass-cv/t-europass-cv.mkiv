@@ -33,14 +33,6 @@
 \setgvariables[europass]
   [
            logo=europass-cv-logo, % -- metapost only
-           name={First Last},
-        address={Flat, Street, City (Country)},
-      telephone={+(00) 00 000 00000},
-          email={first.last@company.com},
-             im={username},
-            sex={gender},
-          birth={d=1,m=1,y=2000},
-    nationality={nationality},
   ]
 
 % PDF 2.0
@@ -121,18 +113,23 @@
 }
 
 % europass personal information
-\long\def\europasspersonal{%
+\def\europasspersonal{\dosingleempty\doeuropasspersonal}
+\long\def\doeuropasspersonal[#1] {%
+% FIXME empty !!!
+%  \doifsomething{#1}{1}
+  \ctxlua{userdata.setgkeyval('#1')}
   \europasssmalltext[\tf\WORD{\europasstext{personal_information}}][{\blank[back,halfline]\tfb{\getvariable{europass}{name}}}]
   \blank[back,halfline]
 %% - FIXME!
   \startcolor[europassdarkgray]
   \blank[line]
-  \getvariable{europass}{address} \par
-  \getvariable{europass}{telephone} \par
-  \getvariable{europass}{email} \par
-  \getvariable{europass}{im} \par
+  \doifnotempty{\getvariable{europass}{address}}{\getvariable{europass}{address}} \par
+  \doifnotempty{\getvariable{europass}{telephone}}{\getvariable{europass}{telephone}} \par
+  \doifnotempty{\getvariable{europass}{email}}{\getvariable{europass}{email}} \par
+  \doifnotempty{\getvariable{europass}{im}}{\getvariable{europass}{im}} \par
   \blank[halfline]
-  Sex\space\Word{\getvariable{europass}{sex}} \|\space \par
+  % FIXME empty !!!
+  \doifnotempty{\getvariable{europass}{sex}}{Sex\space\Word{\getvariable{europass}{sex}} \|\space} \par
   \blank[line]
   \stopcolor
 %% - FIXME!
@@ -141,7 +138,7 @@
 
 % europass job applied for
 \def\europassjob{\dosingleempty\doeuropassjob}
-\long\def\europassjob[#1] {%
+\long\def\doeuropassjob[#1] {%
   \europasssmalltext[\tf\WORD{\europasstext{job_applied_for}}][\tfb{#1}]
 } % -- Argument has an extra }
 

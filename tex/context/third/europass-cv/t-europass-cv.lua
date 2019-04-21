@@ -47,3 +47,39 @@ data.labels={
    ["uk"]="British definitions",
  },
 }
+
+userdata              = userdata or { }
+uservariables         = uservariables or { }
+uservariables.content = uservariables.content or { }
+
+function userdata.setgkeyval(keyvals)
+    local named_values = utilities.parsers.settings_to_hash(keyvals) or { }
+
+    uservariables.content['europass'] = uservariables.content['europass'] or { }
+
+    -- local userdata_name        = 'First Last'
+    -- local userdata_address     = 'Flat, Street, City (Country)'
+    -- local userdata_telephone   = '+(00) 00 000 00000'
+    -- local userdata_email       = 'first.last@company.com'
+    -- local userdata_im          = 'username'
+    -- local userdata_sex         = 'gender'
+    -- local userdata_birth       = 'd=1,m=1,y=2000'
+    -- local userdata_nationality = 'nationality'
+
+    -- https://tex.stackexchange.com/questions/343985/using-property-list-from-expl3
+
+    for k,v in pairs(named_values) do
+      uservariables.content['europass'][k] = v
+
+      if k == 'name' then context.setvariables({'europass'},{'name=' .. '{' .. v  .. '}'})
+      elseif k == 'address'     then context.setvariables({'europass'},{'address=' .. '{' .. v  .. '}'})
+      elseif k == 'telephone'   then context.setvariables({'europass'},{'telephone=' .. '{' .. v  .. '}'})
+      elseif k == 'email'       then context.setvariables({'europass'},{'email=' .. '{' .. v  .. '}'})
+      elseif k == 'im'          then context.setvariables({'europass'},{'im=' .. '{' .. v  .. '}'})
+      elseif k == 'sex'         then context.setvariables({'europass'},{'sex=' .. '{' .. v  .. '}'})
+      elseif k == 'birth'       then context.setvariables({'europass'},{'birth=' .. '{' .. v  .. '}'})
+      elseif k == 'nationality' then context.setvariables({'europass'},{'nationality=' .. '{' .. v  .. '}'})
+      end
+    end
+
+end
