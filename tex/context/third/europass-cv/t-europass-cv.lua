@@ -71,7 +71,7 @@ function userdata.setgkeyval(keyvals)
     for k,v in pairs(named_values) do
       uservariables.content['europass'][k] = v
 
-      if k == 'name' then context.setvariables({'europass'},{'name=' .. '{' .. v  .. '}'})
+      if     k == 'name'        then context.setvariables({'europass'},{'name=' .. '{' .. v  .. '}'})
       elseif k == 'address'     then context.setvariables({'europass'},{'address=' .. '{' .. v  .. '}'})
       elseif k == 'telephone'   then context.setvariables({'europass'},{'telephone=' .. '{' .. v  .. '}'})
       elseif k == 'email'       then context.setvariables({'europass'},{'email=' .. '{' .. v  .. '}'})
