@@ -115,9 +115,9 @@
 % europass personal information
 \def\europasspersonal{\dosingleempty\doeuropasspersonal}
 \long\def\doeuropasspersonal[#1] {%
-% FIXME empty !!!
-%  \doifsomething{#1}{1}
-  \ctxlua{userdata.setgkeyval('#1')}
+  \iffirstargument
+    \ctxlua{userdata.setgkeyval('#1')}
+  \fi
   \europasssmalltext[\tf\WORD{\europasstext{personal_information}}][{\blank[back,halfline]\tfb{\getvariable{europass}{name}}}]
   \blank[back,halfline]
 %% - FIXME!
@@ -128,8 +128,8 @@
   \doifnotempty{\getvariable{europass}{email}}{\getvariable{europass}{email}} \par
   \doifnotempty{\getvariable{europass}{im}}{\getvariable{europass}{im}} \par
   \blank[halfline]
-  % FIXME empty !!!
-  \doifnotempty{\getvariable{europass}{sex}}{Sex\space\Word{\getvariable{europass}{sex}} \|\space} \par
+  % \doifnotempty broken
+  \doifundefined{\getvariable{europass}{sex}}{Sex\space\Word{\getvariable{europass}{sex}} \|\space} \par
   \blank[line]
   \stopcolor
 %% - FIXME!
