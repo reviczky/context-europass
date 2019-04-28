@@ -40,8 +40,8 @@
 \startsetups[headername]
 \doifelse{\pagenumber}{1}
   {}
-  {\startframed[frame=on,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\makeupwidth}]
-  \startcolor[europasscyan] \getvariable{europass}{name} \stopcolor % -- \currentmoduleparameter{name}
+  {\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},location={top},height={\headerheight},width={\makeupwidth}]
+  \startcolor[europasscyan] \moduleparameter{europass-cv}{pdfname} \stopcolor % -- \getvariable{europass}{name}
   \stopframed}
 \stopsetups
 
@@ -50,27 +50,23 @@
 % europass footer
 \doifelse{\currentmoduleparameter{copyright}}{yes}
   {\startsetups[footertext]
-  \startframed[frame=off,offset=0mm,strut=no,width=\textwidth,align=right]
   \startcolor[europasscyan] \tfx © \europasstext{eu}, 2002\endash\currentdate[year] \| \from[europass] \stopcolor
-  \stopframed}
+  \stopsetups}
   {\startsetups[footertext]\stopframed}
 \stopsetups
 
 \doifelse{\currentmoduleparameter{date}}{yes}
   {\startsetups[footerdate]
-  \startframed[frame=off,offset=0mm,strut=no,width=45mm,align=right]
   \startcolor[europasscyan] \tfx \europasstext{date} \stopcolor % \currentdate[d,{/},M,{/},yy]
-  \stopframed
   \stopsetups}
   {\startsetups[footerdate]\stopsetups}
 
 \startsetups[footerpage]
-\startframed[frame=off,offset=0mm,strut=no,align=left]
 \startcolor[europasscyan] \tfx \europasstext{page} \currentpage\space/\space\totalnumberofpages \stopcolor
-\stopframed
 \stopsetups
 
 \setupfootertexts[\directsetup{footertext}][\directsetup{footerpage}][\directsetup{footerpage}][\directsetup{footertext}]
+%\setupfootertexts[\setups{footertext}][\setups{footerpage}][\setups{footerpage}][\setups{footertext}]
 \setupfootertexts[margin][\directsetup{footerdate}][]
 
 \stopenvironment
