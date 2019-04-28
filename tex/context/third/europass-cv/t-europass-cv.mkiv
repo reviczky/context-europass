@@ -13,6 +13,7 @@
 % tracker messages
 \writestatus{loading}{ConTeXt Module | Europass: Curriculum Vitæ (2019.03.31)}
 \writestatus{europass}{interface: \currentlanguage}
+% https://tex.stackexchange.com/questions/367433/context-chapter-n-in-header-language-dependent
 %\writestatus{europass}{\ctxlua{context(languages.data.labels.texts["\currentlanguage"])}} % -- FIXME
 
 \ctxloadluafile{t-europass-cv}{}
@@ -33,6 +34,14 @@
 \setgvariables[europass]
   [
            logo=europass-cv-logo, % -- metapost only
+%           name={First Last},
+%        address={Flat, Street, City (Country)},
+%      telephone={+(00) 00 000 00000},
+%          email={first.last@company.com},
+%             im={username},
+%            sex={gender},
+%          birth={d=1,m=1,y=2000},
+%    nationality={nationality},
   ]
 
 % PDF 2.0
@@ -61,8 +70,9 @@
 \mainlanguage[en]
 \setuppapersize[A4,portrait][A4,portrait]
 \doifdefinedelse{\currentmoduleparameter{mainfont}}
-  {\setupbodyfont[heros,10pt,ss]} % mscore
-  {\setupbodyfont[\currentmoduleparameter{mainfont},10pt,ss]} % \moduleparameter{europass-cv}{mainfont}
+  {\setupbodyfont[heros,ss]} % mscore
+  {\setupbodyfont[\currentmoduleparameter{mainfont},ss]} % \moduleparameter{europass-cv}{mainfont}
+\switchtobodyfont[10pt] % \definebodyfontenvironment[10pt]
 \definefontfeature[default][default][protrusion=quality,expansion=quality]
 \setupalign[hz,hanging]
 \setuppagenumbering[location=]
@@ -84,6 +94,32 @@
    currentpicture := currentpicture ysized \MPvar{size};
    \stopuniqueMPgraphic}
 
+% figures
+\startuniqueMPgraphic{address}{size}
+input europass-address.mp;
+currentpicture := currentpicture ysized \MPvar{size};
+\stopuniqueMPgraphic
+
+\startuniqueMPgraphic{im}{size}
+input europass-im.mp;
+currentpicture := currentpicture ysized \MPvar{size};
+\stopuniqueMPgraphic
+
+\startuniqueMPgraphic{mail}{size}
+input europass-mail.mp;
+currentpicture := currentpicture ysized \MPvar{size};
+\stopuniqueMPgraphic
+
+\startuniqueMPgraphic{phone}{size}
+input europass-phone.mp;
+currentpicture := currentpicture ysized \MPvar{size};
+\stopuniqueMPgraphic
+
+\startuniqueMPgraphic{work}{size}
+input europass-work.mp;
+currentpicture := currentpicture ysized \MPvar{size};
+\stopuniqueMPgraphic
+
 \startsetups[headerlogo]
 \doifelse{\pagenumber}{1}
   {\startframed[frame=off,offset=0mm,strut=no,align={left,lohi},boffset=3mm,location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=13mm} \stopframed}
@@ -96,10 +132,21 @@
 \def\europassbar{\dosingleempty\doeuropassbar}
 \long\def\doeuropassbar[#1] {%
 % -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
+  \setuplocalinterlinespace[medium] % \setupinterlinespace[medium]
   \blank[halfline,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
     \inmargin{\startcolor[europassdarkblue] \tf\WORD{#1} \stopcolor}
     {\startcolor[europasscyan] \setupthinrules[depth=1pt]\startoverlay{\strut\blackrule[height=0pt,width=\dimexpr\textwidth-9pt\relax]\blacksquare}{\strut\blackrule[depth=1pt,height=0.1pt,width=\dimexpr\textwidth-1.4pt\relax]\blackrule[depth=0pt,height=0pt,width=0.1pt]}\stopoverlay \stopcolor} \par
   \blank[halfline,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
+  \setuplocalinterlinespace[reset] % \setupinterlinespace[reset]
+}
+
+% europass line
+\def\europassline{\dodoubleempty\doeuropassline}
+\long\def\doeuropassline[#1][#2]#3 {%
+  \blank[halfline]
+    \inmargin{\startcolor[europassdarkblue] {\tf #1} \stopcolor}
+    {\startcolor[europasscyan] \tfa{#2} \stopcolor} \hfill \startcolor[europasscyan] {\tfxx #3} \stopcolor \par
+  \blank[halfline]
 }
 
 % europass small text
@@ -107,9 +154,9 @@
 \long\def\doeuropasssmalltext[#1][#2] {%
 % -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
   \blank[halfline] % \vbox to \lineheight{}\blank[samepage, -halfline]
-    \inmargin{\startcolor[europassdarkblue] \tf\Word {#1} \stopcolor}
+    \inmargin{\startcolor[europassdarkblue] \tf\Word{#1} \stopcolor}
     {\startcolor[europassdarkgray] {#2} \stopcolor} \par
-  \blank[halfline,force]
+  \blank[line,force] % \blank[halfline,force]
 }
 
 % europass personal information
@@ -122,6 +169,7 @@
   \blank[back,halfline]
 %% - FIXME!
   \startcolor[europassdarkgray]
+  \tfx
   \blank[line]
   \doifnotempty{\getvariable{europass}{address}}{\getvariable{europass}{address}} \par
   \doifnotempty{\getvariable{europass}{telephone}}{\getvariable{europass}{telephone}} \par
@@ -130,16 +178,16 @@
   \blank[halfline]
   % \doifnotempty broken
   \doifundefined{\getvariable{europass}{sex}}{Sex\space\Word{\getvariable{europass}{sex}} \|\space} \par
-  \blank[line]
+  \tf
   \stopcolor
 %% - FIXME!
-  \blank[halfline]
+  \blank[line]
 } % -- Argument has an extra }
 
 % europass job applied for
 \def\europassjob{\dosingleempty\doeuropassjob}
 \long\def\doeuropassjob[#1] {%
-  \europasssmalltext[\tf\WORD{\europasstext{job_applied_for}}][\tfb{#1}]
+  \europasssmalltext[\WORD{\europasstext{job_applied_for}}][\tfb{#1}]
 } % -- Argument has an extra }
 
 % europass work experience
@@ -164,4 +212,11 @@
 
 \protect
 \stopmodule
+
+%% sample document
+\continueifinputfile{t-europass-cv.mkiv}
+
+\starttext
+\stoptext
+
 \endinput
