@@ -52,7 +52,7 @@
   {\startsetups[footertext]
   \startcolor[europasscyan] \tfx © \europasstext{eu}, 2002\endash\currentdate[year] \| \from[europass] \stopcolor
   \stopsetups}
-  {\startsetups[footertext]\stopframed}
+  {\startsetups[footertext]\stopsetups}
 \stopsetups
 
 \doifelse{\currentmoduleparameter{date}}{yes}
@@ -66,7 +66,6 @@
 \stopsetups
 
 \setupfootertexts[\directsetup{footertext}][\directsetup{footerpage}][\directsetup{footerpage}][\directsetup{footertext}]
-%\setupfootertexts[\setups{footertext}][\setups{footerpage}][\setups{footerpage}][\setups{footertext}]
 \setupfootertexts[margin][\directsetup{footerdate}][]
 
 \stopenvironment
