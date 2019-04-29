@@ -60,6 +60,8 @@ function userdata.setgkeyval(keyvals)
     -- local userdata_name        = 'First Last'
     -- local userdata_address     = 'Flat, Street, City (Country)'
     -- local userdata_telephone   = '+(00) 00 000 00000'
+    -- local userdata_work        = '+(00) 00 000 00000'
+    -- local userdata_mobile      = '+(00) 00 000 00000'
     -- local userdata_email       = 'first.last@company.com'
     -- local userdata_im          = 'username'
     -- local userdata_sex         = 'gender'
@@ -74,6 +76,8 @@ function userdata.setgkeyval(keyvals)
       if     k == 'name'        then context.setvariables({'europass'},{'name=' .. '{' .. v  .. '}'})
       elseif k == 'address'     then context.setvariables({'europass'},{'address=' .. '{' .. v  .. '}'})
       elseif k == 'telephone'   then context.setvariables({'europass'},{'telephone=' .. '{' .. v  .. '}'})
+      elseif k == 'work'        then context.setvariables({'europass'},{'work=' .. '{' .. v  .. '}'})
+      elseif k == 'mobile'      then context.setvariables({'europass'},{'mobile=' .. '{' .. v  .. '}'})
       elseif k == 'email'       then context.setvariables({'europass'},{'email=' .. '{' .. v  .. '}'})
       elseif k == 'im'          then context.setvariables({'europass'},{'im=' .. '{' .. v  .. '}'})
       elseif k == 'sex'         then context.setvariables({'europass'},{'sex=' .. '{' .. v  .. '}'})

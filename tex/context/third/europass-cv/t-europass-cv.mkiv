@@ -37,6 +37,8 @@
 %           name={First Last},
 %        address={Flat, Street, City (Country)},
 %      telephone={+(00) 00 000 00000},
+%           work={+(00) 00 000 00000},
+%         mobile={+(00) 00 000 00000},
 %          email={first.last@company.com},
 %             im={username},
 %            sex={gender},
@@ -110,6 +112,11 @@ input europass-mail.mp;
 currentpicture := currentpicture ysized \MPvar{size};
 \stopuniqueMPgraphic
 
+\startuniqueMPgraphic{mobile}{size}
+input europass-mobile.mp;
+currentpicture := currentpicture ysized \MPvar{size};
+\stopuniqueMPgraphic
+
 \startuniqueMPgraphic{phone}{size}
 input europass-phone.mp;
 currentpicture := currentpicture ysized \MPvar{size};
@@ -134,7 +141,7 @@ currentpicture := currentpicture ysized \MPvar{size};
 % -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
   \setuplocalinterlinespace[medium] % \setupinterlinespace[medium]
   \blank[halfline,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
-    \inmargin{\startcolor[europassdarkblue] \tf\WORD{#1} \stopcolor}
+    \inmargin{\startcolor[europassdarkblue] \WORD{\tf #1} \stopcolor}
     {\startcolor[europasscyan] \setupthinrules[depth=1pt]\startoverlay{\strut\blackrule[height=0pt,width=\dimexpr\textwidth-9pt\relax]\blacksquare}{\strut\blackrule[depth=1pt,height=0.1pt,width=\dimexpr\textwidth-1.4pt\relax]\blackrule[depth=0pt,height=0pt,width=0.1pt]}\stopoverlay \stopcolor} \par
   \blank[halfline,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
   \setuplocalinterlinespace[reset] % \setupinterlinespace[reset]
@@ -145,18 +152,27 @@ currentpicture := currentpicture ysized \MPvar{size};
 \long\def\doeuropassline[#1][#2]#3 {%
   \blank[halfline]
     \inmargin{\startcolor[europassdarkblue] {\tf #1} \stopcolor}
-    {\startcolor[europasscyan] \tfa{#2} \stopcolor} \hfill \startcolor[europasscyan] {\tfxx #3} \stopcolor \par
+    {\startcolor[europasscyan] {\tfa #2} \stopcolor} \hfill \startcolor[europasscyan] {\tfxx #3} \stopcolor \par
   \blank[halfline]
 }
 
-% europass small text
-\def\europasssmalltext{\dodoubleempty\doeuropasssmalltext}
-\long\def\doeuropasssmalltext[#1][#2] {%
+% europass line text
+\def\europasslinetext{\dodoubleempty\doeuropasslinetext}
+\long\def\doeuropasslinetext[#1][#2] {%
 % -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
   \blank[halfline] % \vbox to \lineheight{}\blank[samepage, -halfline]
-    \inmargin{\startcolor[europassdarkblue] \tf\Word{#1} \stopcolor}
+    \inmargin{\startcolor[europassdarkblue] {\tf #1} \stopcolor}
     {\startcolor[europassdarkgray] {#2} \stopcolor} \par
   \blank[line,force] % \blank[halfline,force]
+}
+
+% europass table text
+\def\europasstabletext{\dodoubleempty\doeuropasstabletext}
+\long\def\doeuropasstabletext[#1][#2] {%
+  \blank[halfline]
+    \inmargin{\startcolor[europassdarkblue] {\tf #1} \stopcolor}
+    {\startcolor[europassdarkgray] {#2} \stopcolor} \par
+  \blank[halfline]
 }
 
 % europass personal information
@@ -165,29 +181,127 @@ currentpicture := currentpicture ysized \MPvar{size};
   \iffirstargument
     \ctxlua{userdata.setgkeyval('#1')}
   \fi
-  \europasssmalltext[\tf\WORD{\europasstext{personal_information}}][{\blank[back,halfline]\tfb{\getvariable{europass}{name}}}]
+
+  \europasslinetext [\tf\WORD{\europasstext{personal_information}}] [{\blank[back,halfline]\tfb{\getvariable{europass}{name}}}]
+
   \blank[back,halfline]
+
 %% - FIXME!
   \startcolor[europassdarkgray]
-  \tfx
+
   \blank[line]
-  \doifnotempty{\getvariable{europass}{address}}{\getvariable{europass}{address}} \par
-  \doifnotempty{\getvariable{europass}{telephone}}{\getvariable{europass}{telephone}} \par
-  \doifnotempty{\getvariable{europass}{email}}{\getvariable{europass}{email}} \par
-  \doifnotempty{\getvariable{europass}{im}}{\getvariable{europass}{im}} \par
-  \blank[halfline]
+
+  \doifundefined{\getvariable{europass}{address}}{
+    \europasslinetext
+      []
+      [
+       \vskip-\dimexpr\lineheight/2\relax%
+       \tfx
+       \dontleavehmode
+       \inframed[frame=on,offset=0mm,strut=no,location=low,width=0.38cm]%
+         {\scale[width=0.23cm]{\uniqueMPgraphic{address}{size=1}}}
+       \hspace[smallmedium]%
+       \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
+         {\getvariable{europass}{address}}%
+      ]
+    \blank[back,-line]%
+  } \par
+
+  \doifundefined{\getvariable{europass}{telephone}}{
+    \europasslinetext
+      []
+      [
+       \vskip-\dimexpr\lineheight/2\relax%
+       \tfx
+       \dontleavehmode
+       \inframed[frame=on,offset=0mm,strut=no,location=low]%
+         {\scale[width=0.35cm]{\uniqueMPgraphic{phone}{size=1}}}
+       \hspace[smallmedium]%
+       \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
+         {\getvariable{europass}{telephone}}
+      ]
+    \blank[back,-line]%
+  } \par
+
+  \doifundefined{\getvariable{europass}{work}}{
+    \europasslinetext
+      []
+      [
+       \vskip-\dimexpr\lineheight/2\relax%
+       \tfx
+       \dontleavehmode
+       \inframed[frame=on,offset=0mm,strut=no,location=low]%
+         {\scale[width=0.35cm]{\uniqueMPgraphic{work}{size=1}}}
+       \hspace[smallmedium]%
+       \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
+         {\getvariable{europass}{work}}
+      ]
+    \blank[back,-line]%
+  } \par
+
+  \doifundefined{\getvariable{europass}{mobile}}{
+    \europasslinetext
+      []
+      [
+       \vskip-\dimexpr\lineheight/2\relax%
+       \tfx
+       \dontleavehmode
+       \inframed[frame=on,offset=0mm,strut=no,location=low,width=0.38cm]%
+         {\scale[width=0.23cm]{\uniqueMPgraphic{mobile}{size=1}}}
+       \hspace[smallmedium]%
+       \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
+         {\getvariable{europass}{mobile}}
+      ]
+    \blank[back,-line]%
+  } \par
+
+  \doifundefined{\getvariable{europass}{email}}{
+    \europasslinetext
+      []
+      [
+       \vskip-\dimexpr\lineheight/2\relax%
+       \tfx
+       \dontleavehmode
+       \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm]%
+         {\scale[width=0.35cm]{\uniqueMPgraphic{mail}{size=1}}}
+       \hspace[smallmedium]%
+       \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
+         {\setupinteraction[color=europassdarkgray,contrastcolor=europassdarkgray]\goto{\getvariable{europass}{email}}[url(mailto:\getvariable{europass}{email})]}
+      ]
+    \blank[back,-line]%
+  } \par
+
   % \doifnotempty broken
-  \doifundefined{\getvariable{europass}{sex}}{Sex\space\Word{\getvariable{europass}{sex}} \|\space} \par
-  \tf
-  \stopcolor
-%% - FIXME!
+  % \doifnotempty{\getvariable{europass}{im}}{\getvariable{europass}{im}} \par
+
   \blank[line]
+
+  \europasslinetext
+    []
+    [
+     \doifundefined
+       {\getvariable{europass}{sex}}
+       {\startcolor[europasscyan]Sex\space\stopcolor\Word{\getvariable{europass}{sex}}}
+     \doifundefined
+       {\getvariable{europass}{birth}}
+       {\space\startcolor[europasscyan]\|\ Date of birth\stopcolor\space\date[d=\getvariable{europass:birth}{d},m=\getvariable{europass:birth}{m},y=\getvariable{europass:birth}{y}][dd,/,mm,/,year]}
+     \doifundefined
+       {\getvariable{europass}{nationality}}
+       {\space\startcolor[europasscyan]\|\ Nationality\stopcolor\space\Word{\getvariable{europass}{nationality}}}
+    ]
+
+%% - FIXME!
+
+  \blank[line,force]
+  \vskip-.56em % adjust to \tfb
+
+  \stopcolor
 } % -- Argument has an extra }
 
 % europass job applied for
 \def\europassjob{\dosingleempty\doeuropassjob}
 \long\def\doeuropassjob[#1] {%
-  \europasssmalltext[\WORD{\europasstext{job_applied_for}}][\tfb{#1}]
+  \europasslinetext[\WORD{\europasstext{job_applied_for}}][{\tfb #1}]
 } % -- Argument has an extra }
 
 % europass work experience

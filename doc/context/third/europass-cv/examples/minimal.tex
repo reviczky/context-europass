@@ -44,6 +44,8 @@
           name={\author},                % -- see name definition at line 1!
        address={Flat, Street, City (Country)}, % -- remove to disable
      telephone={+(00) 00 000 00000},     % -- remove to disable
+          work={+(00) 00 000 00000},     % -- remove to disable
+        mobile={+(00) 00 000 00000},     % -- remove to disable
          email={first.last@company.com}, % -- remove to disable
             im={username},               % -- remove to disable
            sex={gender},                 % -- remove to disable
@@ -53,7 +55,7 @@
 
 %% Job Applied For
 % This heading gives an immediate overview of the purpose of your application. Delete non relevant headings in the left column. Example: Human Resources Assistant (ref. 562/2013)
-% \europasssmalltext[{Job Applied For}][{Chief Information Security Officer / CISO}]
+% \europasslinetext[{Job Applied For}][{Chief Information Security Officer / CISO}]
 \europassjob[{Chief Information Security Officer / CISO}]
 
 %% Work Experience
@@ -78,20 +80,22 @@
 % Replace with mother tongue(s).
 % Example: English
 % Do not overestimate your level, which may be checked if you are interviewed!
-\europasssmalltext [{Mother tongue(s)}] [\tfx{English}]
+\europasslinetext [{Mother tongue(s)}] [{\tfx English}]
 % Replace with driving licence category/-ies.
 % Example: B
-\europasssmalltext [{Driving licence}] [\tfx{B}]
+\europasstabletext [{Other language(s)}] [{\tfx English}]
+\europasstabletext [{Digital skills}] [{\tfx Proficient}]
+\europasslinetext [{Driving licence}] [{\tfx B}]
 
 %% Additional Information
 \europassinformation
-\europasssmalltext [{Test}] [{Text}]
+\europasslinetext [{Test}] [{Text}]
 
 %% Annexes
 \europassannex
-\europasssmalltext [{Test}] [{Text}]
-\europasssmalltext [{Test}] [{Text}]
-\europasssmalltext [{Test}] [{Text}]
+\europasslinetext [{Test}] [{Text}]
+\europasslinetext [{Test}] [{Text}]
+\europasslinetext [{Test}] [{Text}]
 
 % pagebreak
 \page[yes]
