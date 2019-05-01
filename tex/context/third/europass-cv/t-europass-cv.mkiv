@@ -56,8 +56,8 @@
 \setupinteraction
   [
            state=start,
-           title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\currentmoduleparameter{pdfname}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}},
-        subtitle={\currentmoduleparameter{pdfname} Europass CV},
+           title={CV-Europass-\currentdate[year,mm,dd]-\WORD{\ctxlua{local lastname = string.match("\moduleparameter{europass-cv}{pdfname}","(\letterpercent w+)$"); context(lastname)}}-\WORD{\currentlanguage}}, % \currentmoduleparameter{pdfname}
+        subtitle={\moduleparameter{europass-cv}{pdfname} Europass CV}, % \currentmoduleparameter{pdfname}
           author={ConTeXt Europass CV},
          keyword={Europass,CV,Cedefop}, % -- PDF 1.7
            color=europasscyan,
