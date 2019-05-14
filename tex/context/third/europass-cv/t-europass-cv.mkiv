@@ -189,77 +189,51 @@ currentpicture := currentpicture ysized \MPvar{size};
 %% - FIXME!
   \startcolor[europassdarkgray]
 
-  \blank[line]
+  \blank[3*quarterline]
 
+  % \doifnotempty broken
   \doifundefined{\getvariable{europass}{address}}{
-    \europasslinetext
-      []
-      [
-       \vskip-\dimexpr\lineheight/2\relax%
        \tfx
        \dontleavehmode
-       \inframed[frame=on,offset=0mm,strut=no,location=low,width=0.38cm]%
+       \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm,width=0.38cm]%
          {\scale[width=0.23cm]{\uniqueMPgraphic{address}{size=1}}}
        \hspace[smallmedium]%
        \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
          {\getvariable{europass}{address}}%
-      ]
-    \blank[back,-line]%
   } \par
 
   \doifundefined{\getvariable{europass}{telephone}}{
-    \europasslinetext
-      []
-      [
-       \vskip-\dimexpr\lineheight/2\relax%
        \tfx
        \dontleavehmode
-       \inframed[frame=on,offset=0mm,strut=no,location=low]%
+       \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm]%
          {\scale[width=0.35cm]{\uniqueMPgraphic{phone}{size=1}}}
        \hspace[smallmedium]%
        \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
-         {\getvariable{europass}{telephone}}
-      ]
-    \blank[back,-line]%
-  } \par
-
+         {\getvariable{europass}{telephone}}%
+       \hspace[mediumbig]%
+  }% \par
   \doifundefined{\getvariable{europass}{work}}{
-    \europasslinetext
-      []
-      [
-       \vskip-\dimexpr\lineheight/2\relax%
        \tfx
        \dontleavehmode
-       \inframed[frame=on,offset=0mm,strut=no,location=low]%
+       \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm]%
          {\scale[width=0.35cm]{\uniqueMPgraphic{work}{size=1}}}
        \hspace[smallmedium]%
        \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
-         {\getvariable{europass}{work}}
-      ]
-    \blank[back,-line]%
-  } \par
-
+         {\getvariable{europass}{work}}%
+       \hspace[mediumbig]%
+  }% \par
   \doifundefined{\getvariable{europass}{mobile}}{
-    \europasslinetext
-      []
-      [
-       \vskip-\dimexpr\lineheight/2\relax%
        \tfx
        \dontleavehmode
-       \inframed[frame=on,offset=0mm,strut=no,location=low,width=0.38cm]%
-         {\scale[width=0.23cm]{\uniqueMPgraphic{mobile}{size=1}}}
+       \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm,width=0.38cm]%
+         {\scale[width=0.2cm]{\uniqueMPgraphic{mobile}{size=1}}}
        \hspace[smallmedium]%
        \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
-         {\getvariable{europass}{mobile}}
-      ]
-    \blank[back,-line]%
-  } \par
+         {\getvariable{europass}{mobile}}%
+       \hspace[mediumbig]%
+  }% \par
 
   \doifundefined{\getvariable{europass}{email}}{
-    \europasslinetext
-      []
-      [
-       \vskip-\dimexpr\lineheight/2\relax%
        \tfx
        \dontleavehmode
        \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm]%
@@ -267,18 +241,21 @@ currentpicture := currentpicture ysized \MPvar{size};
        \hspace[smallmedium]%
        \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
          {\setupinteraction[color=europassdarkgray,contrastcolor=europassdarkgray]\goto{\getvariable{europass}{email}}[url(mailto:\getvariable{europass}{email})]}
-      ]
-    \blank[back,-line]%
   } \par
 
-  % \doifnotempty broken
-  % \doifnotempty{\getvariable{europass}{im}}{\getvariable{europass}{im}} \par
+  % Skype et al.
+  \doifundefined{\getvariable{europass}{im}}{
+       \tfx
+       \dontleavehmode
+       \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm,width=0.38cm]%
+         {\scale[width=0.30cm]{\uniqueMPgraphic{im}{size=1}}}
+       \hspace[smallmedium]%
+       \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
+         {\setupinteraction[color=europassdarkgray,contrastcolor=europassdarkgray]\getvariable{europass}{im}}
+  } \par
 
-  \blank[line]
+  \blank[halfline]
 
-  \europasslinetext
-    []
-    [
      \doifundefined
        {\getvariable{europass}{sex}}
        {\startcolor[europasscyan]Sex\space\stopcolor\Word{\getvariable{europass}{sex}}}
@@ -288,7 +265,6 @@ currentpicture := currentpicture ysized \MPvar{size};
      \doifundefined
        {\getvariable{europass}{nationality}}
        {\space\startcolor[europasscyan]\|\ Nationality\stopcolor\space\Word{\getvariable{europass}{nationality}}}
-    ]
 
 %% - FIXME!
 
