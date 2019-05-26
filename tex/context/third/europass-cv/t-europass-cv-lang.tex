@@ -1,370 +1,534 @@
 \startenvironment t-europass-cv-lang
 
-% https://www.mail-archive.com/ntg-context@ntg.nl/msg63487.html
+%% https://www.mail-archive.com/ntg-context@ntg.nl/msg63487.html
 
-\definelabelclass[europass]
+\definelabelclass[europasslabel]
 
-% Curriculum Vitæ
-\setupeuropasstext[bg][resume={Автобиография}]
-\setupeuropasstext[cs][resume={Životopis}]
-\setupeuropasstext[da][resume={Curriculum vitæ}]
-\setupeuropasstext[de][resume={Lebenslauf}]
-\setupeuropasstext[gr][resume={Βιογραφικό Σημείωμα}]
-\setupeuropasstext[en][resume={Curriculum Vitæ}]
-\setupeuropasstext[es][resume={Currículum vítæ}]
-\setupeuropasstext[et][resume={Curriculum Vitæ}]
-\setupeuropasstext[fi][resume={Ansioluettelo}]
-\setupeuropasstext[fr][resume={Curriculum vitæ}]
-\setupeuropasstext[ga][resume={Curriculum Vitæ}]
-\setupeuropasstext[hr][resume={Curriculum vitæ}]
-\setupeuropasstext[hu][resume={Önéletrajz}]
-\setupeuropasstext[is][resume={Ferilskrá}]
-\setupeuropasstext[it][resume={Curriculum vitæ}]
-\setupeuropasstext[lt][resume={Gyvenimo aprašymas}]
-\setupeuropasstext[lv][resume={Curriculum Vitæ}]
-\setupeuropasstext[me][resume={Biografija \endash CV}]
-\setupeuropasstext[mk][resume={Кратка биографија}]
-\setupeuropasstext[mt][resume={Curriculum vitæ}]
-\setupeuropasstext[nb][resume={Curriculum Vitæ}]
-\setupeuropasstext[nl][resume={Curriculum vitæ}]
-\setupeuropasstext[pl][resume={Curriculum Vitæ}]
-\setupeuropasstext[pt][resume={Curriculum Vitæ}]
-\setupeuropasstext[ro][resume={Curriculum Vitæ}]
-\setupeuropasstext[sk][resume={Životopis}]
-\setupeuropasstext[sl][resume={Curriculum vitæ}]
-\setupeuropasstext[sr][resume={Curriculum Vitæ}]
-\setupeuropasstext[sv][resume={Meritförteckning}]
-\setupeuropasstext[tr][resume={Özgeçmiş}]
-\setupeuropasstext[uk][resume={Curriculum Vitæ}]
+%% Bulgarian
+\setupeuropasslabeltext
+  [bg]
+  [
+   cv:resume={Автобиография},                                            % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Страница},                                                   % Page
+   cv:eu={Европейски съюз},                                              % European Union
+   cv:personalinformation={Лична информация},                            % Personal Information
+   cv:jobappliedfor={Позиция, за която се кандидатства},                 % Job Applied For
+   cv:workexperience={Трудов стаж},                                      % Work Experience
+   cv:educationandtraining={Образование и обучение},                     % Education and Training
+   cv:personalskills={Лични умения и компетенции},                       % Personal Skills
+   cv:additionalinformation={Допълнителна информация},                   % Additional Information
+   cv:annexes={Приложения}                                               % Annexes
+  ]
 
-% Date
-\setupeuropasstext[bg][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[cs][date={\ctxlua{context.currentdate({"d,.,M,.,year"})}}]
-\setupeuropasstext[da][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[de][date={\ctxlua{context.currentdate({"d,.,M,.,yy"})}}]
-\setupeuropasstext[gr][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[en][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[es][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[et][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[fi][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[fr][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[ga][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[hr][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[hu][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[is][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[it][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[lt][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[lv][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[me][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[mk][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[mt][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[nb][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[nl][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[pl][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[pt][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[ro][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[sk][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[sl][date={\ctxlua{context.currentdate({"d,.,M,.,year"})}}]
-\setupeuropasstext[sr][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[sv][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[tr][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
-\setupeuropasstext[uk][date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}}]
+%% Czech
+\setupeuropasslabeltext
+  [cs]
+  [
+   cv:resume={Životopis},                                                % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,.,M,.,year"})}},             % Date
+   cv:page={Stránka},                                                    % Page
+   cv:eu={Evropská unie},                                                % European Union
+   cv:personalinformation={Osobní údaje},                                % Personal Information
+   cv:jobappliedfor={Pracovní pozice, o kterou se ucházím},              % Job Applied For
+   cv:workexperience={Pracovní zkušenosti},                              % Work Experience
+   cv:educationandtraining={Vzdělávání, odborná příprava a kurzy},       % Education and Training
+   cv:personalskills={Osobní dovednosti},                                % Personal Skills
+   cv:additionalinformation={Doplňující informace},                      % Additional Information
+   cv:annexes={Přílohy}                                                  % Annexes
+  ]
 
-% Page
-\setupeuropasstext[bg][page={Страница}]
-\setupeuropasstext[cs][page={Stránka}]
-\setupeuropasstext[da][page={Side}]
-\setupeuropasstext[de][page={Seite}]
-\setupeuropasstext[gr][page={Σελίδα}]
-\setupeuropasstext[en][page={Page}]
-\setupeuropasstext[es][page={Página}]
-\setupeuropasstext[et][page={Lehekülg}]
-\setupeuropasstext[fi][page={Sivu}]
-\setupeuropasstext[fr][page={Page}]
-\setupeuropasstext[ga][page={Page}]
-\setupeuropasstext[hr][page={Stranica}]
-\setupeuropasstext[hu][page={Oldal}]
-\setupeuropasstext[is][page={Síða}]
-\setupeuropasstext[it][page={Pagina}]
-\setupeuropasstext[lt][page={Puslapis}]
-\setupeuropasstext[lv][page={Lapa}]
-\setupeuropasstext[me][page={Stranica}]
-\setupeuropasstext[mk][page={Страна}]
-\setupeuropasstext[mt][page={Paġna}]
-\setupeuropasstext[nb][page={Side}]
-\setupeuropasstext[nl][page={Pagina}]
-\setupeuropasstext[pl][page={Strona}]
-\setupeuropasstext[pt][page={Página}]
-\setupeuropasstext[ro][page={Pagina}]
-\setupeuropasstext[sk][page={Strana}]
-\setupeuropasstext[sl][page={Stran}]
-\setupeuropasstext[sr][page={Страница}] % Stranica
-\setupeuropasstext[sv][page={Sida}]
-\setupeuropasstext[tr][page={Sayfa}]
-\setupeuropasstext[uk][page={Page}]
+%% Danish
+\setupeuropasslabeltext
+  [da]
+  [
+   cv:resume={Curriculum vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Side},                                                       % Page
+   cv:eu={Den Europæiske Union},                                         % European Union
+   cv:personalinformation={Personlig information},                       % Personal Information
+   cv:jobappliedfor={Ansøgte stillinger},                                % Job Applied For
+   cv:workexperience={Erhvervserfaring},                                 % Work Experience
+   cv:educationandtraining={Almen og erhvervsrettet uddannelse},         % Education and Training
+   cv:personalskills={Personlige kompetencer},                           % Personal Skills
+   cv:additionalinformation={Øvrige Informationer},                      % Additional Information
+   cv:annexes={Bilag}                                                    % Annexes
+  ]
 
-% European Union
-\setupeuropasstext[bg][eu={Европейски съюз}]
-\setupeuropasstext[cs][eu={Evropská unie}]
-\setupeuropasstext[da][eu={Den Europæiske Union}]
-\setupeuropasstext[de][eu={Europäische Union}]
-\setupeuropasstext[gr][eu={Ευρωπαϊκή Ένωση}]
-\setupeuropasstext[en][eu={European Union}]
-\setupeuropasstext[es][eu={Unión Europea}]
-\setupeuropasstext[et][eu={Euroopa Liit}]
-\setupeuropasstext[fi][eu={Euroopan unioni}]
-\setupeuropasstext[fr][eu={Union européenne}]
-\setupeuropasstext[ga][eu={An tAontas Eorpach}]
-\setupeuropasstext[hr][eu={Europska unija}]
-\setupeuropasstext[hu][eu={Európai Unió}]
-\setupeuropasstext[is][eu={Evrópusambandið}]
-\setupeuropasstext[it][eu={Unione europea}]
-\setupeuropasstext[lt][eu={Europos Sąjunga}]
-\setupeuropasstext[lv][eu={Eiropas Savienība}]
-\setupeuropasstext[me][eu={Europska unija}]
-\setupeuropasstext[mk][eu={Европска Унија}]
-\setupeuropasstext[mt][eu={Unjoni Ewropea}]
-\setupeuropasstext[nb][eu={Den europeiske unionen}]
-\setupeuropasstext[nl][eu={Europese Unie}]
-\setupeuropasstext[pl][eu={Unia Europejska}]
-\setupeuropasstext[pt][eu={União Europeia}]
-\setupeuropasstext[ro][eu={Uniunea Europeană}]
-\setupeuropasstext[sk][eu={Európska únia}]
-\setupeuropasstext[sl][eu={Evropska unija}]
-\setupeuropasstext[sr][eu={Европска унија}] % Evropska unija
-\setupeuropasstext[sv][eu={Europeiska unionen}]
-\setupeuropasstext[tr][eu={Avrupa Birliği}]
-\setupeuropasstext[uk][eu={European Union}]
+%% German
+\setupeuropasslabeltext
+  [de]
+  [
+   cv:resume={Lebenslauf},                                               % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,.,M,.,yy"})}},               % Date
+   cv:page={Seite},                                                      % Page
+   cv:eu={Europäische Union},                                            % European Union
+   cv:personalinformation={Angaben zur Person},                          % Personal Information
+   cv:jobappliedfor={Angestrebte Tätigkeit},                             % Job Applied For
+   cv:workexperience={Berufserfahrung},                                  % Work Experience
+   cv:educationandtraining={Schul- und Berufsbildung},                   % Education and Training
+   cv:personalskills={Persönliche Fähigkeiten},                          % Personal Skills
+   cv:additionalinformation={Zusätzliche Informationen},                 % Additional Information
+   cv:annexes={Anlagen}                                                  % Annexes
+  ]
 
-% Personal Information
-\setupeuropasstext[bg][personal_information={Лична информация}]
-\setupeuropasstext[cs][personal_information={Osobní údaje}]
-\setupeuropasstext[da][personal_information={Personlig information}]
-\setupeuropasstext[de][personal_information={Angaben zur Person}]
-\setupeuropasstext[gr][personal_information={Προσωπικές Πληροφορίες}]
-\setupeuropasstext[en][personal_information={Personal Information}]
-\setupeuropasstext[es][personal_information={Información personal}]
-\setupeuropasstext[et][personal_information={Personaalne Informatsioon}]
-\setupeuropasstext[fi][personal_information={Henkilötiedot}]
-\setupeuropasstext[fr][personal_information={Information personnelle}]
-\setupeuropasstext[ga][personal_information={Eolas Pearsanta}]
-\setupeuropasstext[hr][personal_information={Osobne Informacije}]
-\setupeuropasstext[hu][personal_information={Személyi adatok}]
-\setupeuropasstext[is][personal_information={Persónulegar upplýsingar}]
-\setupeuropasstext[it][personal_information={Informazioni Personali}]
-\setupeuropasstext[lt][personal_information={Asmeninė informacija}]
-\setupeuropasstext[lv][personal_information={Personas dati}]
-\setupeuropasstext[me][personal_information={Lične Informacije}]
-\setupeuropasstext[mk][personal_information={Лични информации}]
-\setupeuropasstext[mt][personal_information={Informazzjoni Personali}]
-\setupeuropasstext[nb][personal_information={Personlige opplysninger}]
-\setupeuropasstext[nl][personal_information={Persoonlijke informatie}]
-\setupeuropasstext[pl][personal_information={Informacje osobiste}]
-\setupeuropasstext[pt][personal_information={Informação Pessoal}]
-\setupeuropasstext[ro][personal_information={Informaţii Personale}]
-\setupeuropasstext[sk][personal_information={Osobné údaje}]
-\setupeuropasstext[sl][personal_information={Osebni podatki}]
-\setupeuropasstext[sr][personal_information={Личне информације}] % Lične informacije
-\setupeuropasstext[sv][personal_information={Personlig Information}]
-\setupeuropasstext[tr][personal_information={Kişisel Bilgiler}]
-\setupeuropasstext[uk][personal_information={Personal Information}]
+%% Greek
+\setupeuropasslabeltext
+  [gr]
+  [
+   cv:resume={Βιογραφικό Σημείωμα},                                      % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Σελίδα},                                                     % Page
+   cv:eu={Ευρωπαϊκή Ένωση},                                              % European Union
+   cv:personalinformation={Προσωπικές Πληροφορίες},                      % Personal Information
+   cv:jobappliedfor={Επιθυµητή θέση εργασίας},                           % Job Applied For
+   cv:workexperience={Επαγγελματική Εμπειρία},                           % Work Experience
+   cv:educationandtraining={Εκπαίδευση και κατάρτιση},                   % Education and Training
+   cv:personalskills={Ατομικές δεξιότητες},                              % Personal Skills
+   cv:additionalinformation={Πρόσθετες πληροφορίες},                     % Additional Information
+   cv:annexes={Παραρτήματα}                                              % Annexes
+  ]
 
-% Job Applied For
-\setupeuropasstext[bg][job_applied_for={Позиция, за която се кандидатства}]
-\setupeuropasstext[cs][job_applied_for={Pracovní pozice, o kterou se ucházím}]
-\setupeuropasstext[da][job_applied_for={Ansøgte stillinger}]
-\setupeuropasstext[de][job_applied_for={Angestrebte Tätigkeit}]
-\setupeuropasstext[gr][job_applied_for={Επιθυµητή θέση εργασίας}]
-\setupeuropasstext[en][job_applied_for={Job Applied For}]
-\setupeuropasstext[es][job_applied_for={Empleo Solicitado}]
-\setupeuropasstext[et][job_applied_for={Soovitud töökoht}]
-\setupeuropasstext[fi][job_applied_for={Työtehtävä johon haetaan}]
-\setupeuropasstext[fr][job_applied_for={Emploi Recherché}]
-\setupeuropasstext[ga][job_applied_for={Post}]
-\setupeuropasstext[hr][job_applied_for={Radno mjesto na koje se prijavljujete}]
-\setupeuropasstext[hu][job_applied_for={Betölteni kívánt munkakör}]
-\setupeuropasstext[is][job_applied_for={Starf sem sótt er um}]
-\setupeuropasstext[it][job_applied_for={Occupazione desiderata}]
-\setupeuropasstext[lt][job_applied_for={Pageidaujamas darbas}]
-\setupeuropasstext[lv][job_applied_for={Vakance}]
-\setupeuropasstext[me][job_applied_for={Radno mjesto na koje se prijavljujete}]
-\setupeuropasstext[mk][job_applied_for={Студии за кои аплицирате}]
-\setupeuropasstext[mt][job_applied_for={L-impjieg li appllikajt għalih}]
-\setupeuropasstext[nb][job_applied_for={Søkt stilling}]
-\setupeuropasstext[nl][job_applied_for={Gewenste functie / werkterrein}]
-\setupeuropasstext[pl][job_applied_for={Stanowisko o jakie się ubiegasz}]
-\setupeuropasstext[pt][job_applied_for={Posto de trabalho a que se candidata}]
-\setupeuropasstext[ro][job_applied_for={Locul de muncă pentru care se candidează}]
-\setupeuropasstext[sk][job_applied_for={Názov zamestnania, o ktoré sa uchádzate}]
-\setupeuropasstext[sl][job_applied_for={Prijava na delovno mesto}]
-\setupeuropasstext[sr][job_applied_for={Пријава за радно место}] % Prijava za radno mesto
-\setupeuropasstext[sv][job_applied_for={Sökt anställning}]
-\setupeuropasstext[tr][job_applied_for={İş Deneyimi}]
-\setupeuropasstext[uk][job_applied_for={Job Applied For}]
+%% English
+\setupeuropasslabeltext
+  [en]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Page},                                                       % Page
+   cv:eu={European Union},                                               % European Union
+   cv:personalinformation={Personal Information},                        % Personal Information
+   cv:jobappliedfor={Job Applied For},                                   % Job Applied For
+   cv:workexperience={Work Experience},                                  % Work Experience
+   cv:educationandtraining={Education and Training},                     % Education and Training
+   cv:personalskills={Personal Skills},                                  % Personal Skills
+   cv:additionalinformation={Additional Information},                    % Additional Information
+   cv:annexes={Annexes}                                                  % Annexes
+  ]
 
-% Work Experience
-\setupeuropasstext[bg][work_experience={Трудов стаж}]
-\setupeuropasstext[cs][work_experience={Pracovní zkušenosti}]
-\setupeuropasstext[da][work_experience={Erhvervserfaring}]
-\setupeuropasstext[de][work_experience={Berufserfahrung}]
-\setupeuropasstext[gr][work_experience={Επαγγελματική Εμπειρία}]
-\setupeuropasstext[en][work_experience={Work Experience}]
-\setupeuropasstext[es][work_experience={Experiencia Profesional}]
-\setupeuropasstext[et][work_experience={Töökogemus}]
-\setupeuropasstext[fi][work_experience={Työkokemus}]
-\setupeuropasstext[fr][work_experience={Expérience professionnelle}]
-\setupeuropasstext[ga][work_experience={Taithí Oibre}]
-\setupeuropasstext[hr][work_experience={Radno iskustvo}]
-\setupeuropasstext[hu][work_experience={Szakmai tapasztalat}]
-\setupeuropasstext[is][work_experience={Starfsreynsla}]
-\setupeuropasstext[it][work_experience={Esperienza Professionale}]
-\setupeuropasstext[lt][work_experience={Darbo patirtis}]
-\setupeuropasstext[lv][work_experience={Darba pieredze}]
-\setupeuropasstext[me][work_experience={Radno iskustvo}]
-\setupeuropasstext[mk][work_experience={Работно искуство}]
-\setupeuropasstext[mt][work_experience={Esperjenza tax-xogħol}]
-\setupeuropasstext[nb][work_experience={Arbeidserfaring}]
-\setupeuropasstext[nl][work_experience={Werkervaring}]
-\setupeuropasstext[pl][work_experience={Doświadczenie zawodowe}]
-\setupeuropasstext[pt][work_experience={Experiência Profissional}]
-\setupeuropasstext[ro][work_experience={Experienţa profesională}]
-\setupeuropasstext[sk][work_experience={Prax}] % Vzdelávanie a príprava
-\setupeuropasstext[sl][work_experience={Delovne izkušnje}]
-\setupeuropasstext[sr][work_experience={Образовање и обуке}] % Radno iskustvo
-\setupeuropasstext[sv][work_experience={Arbetslivserfarenhet}]
-\setupeuropasstext[tr][work_experience={İş Deneyimi}]
-\setupeuropasstext[uk][work_experience={Work Experience}]
+%% Spanish
+\setupeuropasslabeltext
+  [es]
+  [
+   cv:resume={Currículum vítæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Página},                                                     % Page
+   cv:eu={Unión Europea},                                                % European Union
+   cv:personalinformation={Información personal},                        % Personal Information
+   cv:jobappliedfor={Empleo Solicitado},                                 % Job Applied For
+   cv:workexperience={Experiencia Profesional},                          % Work Experience
+   cv:educationandtraining={Educación y Formación},                      % Education and Training
+   cv:personalskills={Competencias personales},                          % Personal Skills
+   cv:additionalinformation={Información adicional},                     % Additional Information
+   cv:annexes={Anexos}                                                   % Annexes
+  ]
 
-% Education and Training
-\setupeuropasstext[bg][education_and_training={Образование и обучение}]
-\setupeuropasstext[cs][education_and_training={Vzdělávání, odborná příprava a kurzy}]
-\setupeuropasstext[da][education_and_training={Almen og erhvervsrettet uddannelse}]
-\setupeuropasstext[de][education_and_training={Schul- und Berufsbildung}]
-\setupeuropasstext[gr][education_and_training={Εκπαίδευση και κατάρτιση}]
-\setupeuropasstext[en][education_and_training={Education and Training}]
-\setupeuropasstext[es][education_and_training={Educación y Formación}]
-\setupeuropasstext[et][education_and_training={Hariduskäik ja täiendkoolitus}]
-\setupeuropasstext[fi][education_and_training={Koulutus ja opinnot}]
-\setupeuropasstext[fr][education_and_training={Éducation et formation}]
-\setupeuropasstext[ga][education_and_training={Oideachas agus oiliúint}]
-\setupeuropasstext[hr][education_and_training={Obrazovanje i osposobljavanje}]
-\setupeuropasstext[hu][education_and_training={Tanulmányok}]
-\setupeuropasstext[is][education_and_training={Menntun og þjálfun}]
-\setupeuropasstext[it][education_and_training={Istruzione e formazione}]
-\setupeuropasstext[lt][education_and_training={Išsilavinimas ir kvalifikacija}]
-\setupeuropasstext[lv][education_and_training={Izglītība}]
-\setupeuropasstext[me][education_and_training={Obrazovanje i osposobljavanje}]
-\setupeuropasstext[mk][education_and_training={Образование и обука}]
-\setupeuropasstext[mt][education_and_training={Edukazzjoni u taħriġ}]
-\setupeuropasstext[nb][education_and_training={Utdanning og opplæring}]
-\setupeuropasstext[nl][education_and_training={Onderwijs en opleiding}]
-\setupeuropasstext[pl][education_and_training={Wykształcenie i odbyte szkolenia}]
-\setupeuropasstext[pt][education_and_training={Educação e Formação}]
-\setupeuropasstext[ro][education_and_training={Educaţie şi formare}]
-\setupeuropasstext[sk][education_and_training={Vzdelávanie a príprava}]
-\setupeuropasstext[sl][education_and_training={Izobraževanje in usposabljanje}]
-\setupeuropasstext[sr][education_and_training={Радно искуство}] % Obrazovanje i obuke
-\setupeuropasstext[sv][education_and_training={Utbildning}]
-\setupeuropasstext[tr][education_and_training={Eğitim ve Öğretim}]
-\setupeuropasstext[uk][education_and_training={Education and Training}]
+%% Estonian
+\setupeuropasslabeltext
+  [et]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Lehekülg},                                                   % Page
+   cv:eu={Euroopa Liit},                                                 % European Union
+   cv:personalinformation={Personaalne Informatsioon},                   % Personal Information
+   cv:jobappliedfor={Soovitud töökoht},                                  % Job Applied For
+   cv:workexperience={Töökogemus},                                       % Work Experience
+   cv:educationandtraining={Hariduskäik ja täiendkoolitus},              % Education and Training
+   cv:personalskills={Isiklikud oskused},                                % Personal Skills
+   cv:additionalinformation={Lisateave},                                 % Additional Information
+   cv:annexes={Lisad}                                                    % Annexes
+  ]
 
-% Personal Skills
-\setupeuropasstext[bg][personal_skills={Лични умения и компетенции}]
-\setupeuropasstext[cs][personal_skills={Osobní dovednosti}]
-\setupeuropasstext[da][personal_skills={Personlige kompetencer}]
-\setupeuropasstext[de][personal_skills={Persönliche Fähigkeiten}]
-\setupeuropasstext[gr][personal_skills={Ατομικές δεξιότητες}]
-\setupeuropasstext[en][personal_skills={Personal Skills}]
-\setupeuropasstext[es][personal_skills={Competencias personales}]
-\setupeuropasstext[et][personal_skills={Isiklikud oskused}]
-\setupeuropasstext[fi][personal_skills={Henkilökohtaiset taidot}]
-\setupeuropasstext[fr][personal_skills={Compétences personnelles}]
-\setupeuropasstext[ga][personal_skills={Scileanna pearsanta}]
-\setupeuropasstext[hr][personal_skills={Osobne vještine}]
-\setupeuropasstext[hu][personal_skills={Személyes készségek}]
-\setupeuropasstext[is][personal_skills={Persónuleg hæfni}]
-\setupeuropasstext[it][personal_skills={Competenze Personali}]
-\setupeuropasstext[lt][personal_skills={Asmeniniai gebėjimai}]
-\setupeuropasstext[lv][personal_skills={Prasmes}]
-\setupeuropasstext[me][personal_skills={Lične vještine i kompetencije}]
-\setupeuropasstext[mk][personal_skills={Лични вештини}]
-\setupeuropasstext[mt][personal_skills={Ħiliet personali}]
-\setupeuropasstext[nb][personal_skills={Personlig kompetanse}]
-\setupeuropasstext[nl][personal_skills={Persoonlijke vaardigheden}]
-\setupeuropasstext[pl][personal_skills={Umiejętności}]
-\setupeuropasstext[pt][personal_skills={Competências pessoais}]
-\setupeuropasstext[ro][personal_skills={Competente personale}]
-\setupeuropasstext[sk][personal_skills={Osobné zručnosti}]
-\setupeuropasstext[sl][personal_skills={Kompetence}]
-\setupeuropasstext[sr][personal_skills={Личне вештине}] % Lične veštine
-\setupeuropasstext[sv][personal_skills={Personliga färdigheter}]
-\setupeuropasstext[tr][personal_skills={Kişisel Becerilerini}]
-\setupeuropasstext[uk][personal_skills={Personal Skills}]
+%% Finnish
+\setupeuropasslabeltext
+  [fi]
+  [
+   cv:resume={Ansioluettelo},                                            % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Sivu},                                                       % Page
+   cv:eu={Euroopan unioni},                                              % European Union
+   cv:personalinformation={Henkilötiedot},                               % Personal Information
+   cv:jobappliedfor={Työtehtävä johon haetaan},                          % Job Applied For
+   cv:workexperience={Työkokemus},                                       % Work Experience
+   cv:educationandtraining={Koulutus ja opinnot},                        % Education and Training
+   cv:personalskills={Henkilökohtaiset taidot},                          % Personal Skills
+   cv:additionalinformation={Lisätietoja},                               % Additional Information
+   cv:annexes={Liitteet}                                                 % Annexes
+  ]
 
-% Additional Information
-\setupeuropasstext[bg][additional_information={Допълнителна информация}]
-\setupeuropasstext[cs][additional_information={Doplňující informace}]
-\setupeuropasstext[da][additional_information={Øvrige Informationer}]
-\setupeuropasstext[de][additional_information={Zusätzliche Informationen}]
-\setupeuropasstext[gr][additional_information={Πρόσθετες πληροφορίες}]
-\setupeuropasstext[en][additional_information={Additional Information}]
-\setupeuropasstext[es][additional_information={Información adicional}]
-\setupeuropasstext[et][additional_information={Lisateave}]
-\setupeuropasstext[fi][additional_information={Lisätietoja}]
-\setupeuropasstext[fr][additional_information={Informations complémentaires}]
-\setupeuropasstext[ga][additional_information={Eolas Breise}]
-\setupeuropasstext[hr][additional_information={Dodatne informacije}]
-\setupeuropasstext[hu][additional_information={Kiegészítő Információk}]
-\setupeuropasstext[is][additional_information={Aðrar upplýsingar}]
-\setupeuropasstext[it][additional_information={Ulteriori informazioni}]
-\setupeuropasstext[lt][additional_information={Papildoma informacija}]
-\setupeuropasstext[lv][additional_information={Papildu informācija}]
-\setupeuropasstext[me][additional_information={Dodatne informacije}]
-\setupeuropasstext[mk][additional_information={Дополнителни информации}]
-\setupeuropasstext[mt][additional_information={Informazzjoni Oħra}]
-\setupeuropasstext[nb][additional_information={Andre opplysninger}]
-\setupeuropasstext[nl][additional_information={Aanvullende informatie}]
-\setupeuropasstext[pl][additional_information={Informacje dodatkowe}]
-\setupeuropasstext[pt][additional_information={Informação adicional}]
-\setupeuropasstext[ro][additional_information={Informaτii suplimentare}]
-\setupeuropasstext[sk][additional_information={Doplňujúce informácie}]
-\setupeuropasstext[sl][additional_information={Dodatni podatki}]
-\setupeuropasstext[sr][additional_information={Додатне информације}] % Dodatne informacije
-\setupeuropasstext[sv][additional_information={Kompletterande information}]
-\setupeuropasstext[tr][additional_information={İlave Bilgi}]
-\setupeuropasstext[uk][additional_information={Additional Information}]
+%% French
+\setupeuropasslabeltext
+  [fr]
+  [
+   cv:resume={Curriculum vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Page},                                                       % Page
+   cv:eu={Union européenne},                                             % European Union
+   cv:personalinformation={Information personnelle},                     % Personal Information
+   cv:jobappliedfor={Emploi Recherché},                                  % Job Applied For
+   cv:workexperience={Expérience professionnelle},                       % Work Experience
+   cv:educationandtraining={Éducation et formation},                     % Education and Training
+   cv:personalskills={Compétences personnelles},                         % Personal Skills
+   cv:additionalinformation={Informations complémentaires},              % Additional Information
+   cv:annexes={Annexes}                                                  % Annexes
+  ]
 
-% Annexes
-\setupeuropasstext[bg][annexes={Приложения}]
-\setupeuropasstext[cs][annexes={Přílohy}]
-\setupeuropasstext[da][annexes={Bilag}]
-\setupeuropasstext[de][annexes={Anlagen}]
-\setupeuropasstext[gr][annexes={Παραρτήματα}]
-\setupeuropasstext[en][annexes={Annexes}]
-\setupeuropasstext[es][annexes={Anexos}]
-\setupeuropasstext[et][annexes={Lisad}]
-\setupeuropasstext[fi][annexes={Liitteet}]
-\setupeuropasstext[fr][annexes={Annexes}]
-\setupeuropasstext[ga][annexes={Aguisíní}] % Innéacsanna
-\setupeuropasstext[hr][annexes={Prilozi}]
-\setupeuropasstext[hu][annexes={Mellékletek}]
-\setupeuropasstext[is][annexes={Viðaukar}]
-\setupeuropasstext[it][annexes={Allegati}]
-\setupeuropasstext[lt][annexes={Priedai}]
-\setupeuropasstext[lv][annexes={Pielikumi}]
-\setupeuropasstext[me][annexes={Prilozi}]
-\setupeuropasstext[mk][annexes={Анекси}]
-\setupeuropasstext[mt][annexes={Annessi}]
-\setupeuropasstext[nb][annexes={Vedlegg}]
-\setupeuropasstext[nl][annexes={Bijlagen}]
-\setupeuropasstext[pl][annexes={Załączniki}]
-\setupeuropasstext[pt][annexes={Anexos}]
-\setupeuropasstext[ro][annexes={Anexe}]
-\setupeuropasstext[sk][annexes={Prílohy}]
-\setupeuropasstext[sl][annexes={Priloge}]
-\setupeuropasstext[sr][annexes={Прилози}] % Prilozi
-\setupeuropasstext[sv][annexes={Bilagor}]
-\setupeuropasstext[tr][annexes={Ekler}]
-\setupeuropasstext[uk][annexes={Annexes}]
+%% Gaeilge
+\setupeuropasslabeltext
+  [ga]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Page},                                                       % Page
+   cv:eu={An tAontas Eorpach},                                           % European Union
+   cv:personalinformation={Eolas Pearsanta},                             % Personal Information
+   cv:jobappliedfor={Post},                                              % Job Applied For
+   cv:workexperience={Taithí Oibre},                                     % Work Experience
+   cv:educationandtraining={Oideachas agus oiliúint},                    % Education and Training
+   cv:personalskills={Scileanna pearsanta},                              % Personal Skills
+   cv:additionalinformation={Eolas Breise},                              % Additional Information
+   cv:annexes={Aguisíní} % Innéacsanna                                   % Annexes
+  ]
+
+%% Croatian
+\setupeuropasslabeltext
+  [hr]
+  [
+   cv:resume={Curriculum vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Stranica},                                                   % Page
+   cv:eu={Europska unija},                                               % European Union
+   cv:personalinformation={Osobne Informacije},                          % Personal Information
+   cv:jobappliedfor={Radno mjesto na koje se prijavljujete},             % Job Applied For
+   cv:workexperience={Radno iskustvo},                                   % Work Experience
+   cv:educationandtraining={Obrazovanje i osposobljavanje},              % Education and Training
+   cv:personalskills={Osobne vještine},                                  % Personal Skills
+   cv:additionalinformation={Dodatne informacije},                       % Additional Information
+   cv:annexes={Prilozi}                                                  % Annexes
+  ]
+
+%% Hungarian
+\setupeuropasslabeltext
+  [hu]
+  [
+   cv:resume={Önéletrajz},                                               % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Oldal},                                                      % Page
+   cv:eu={Európai Unió},                                                 % European Union
+   cv:personalinformation={Személyi adatok},                             % Personal Information
+   cv:jobappliedfor={Betölteni kívánt munkakör},                         % Job Applied For
+   cv:workexperience={Szakmai tapasztalat},                              % Work Experience
+   cv:educationandtraining={Tanulmányok},                                % Education and Training
+   cv:personalskills={Személyes készségek},                              % Personal Skills
+   cv:additionalinformation={Kiegészítő Információk},                    % Additional Information
+   cv:annexes={Mellékletek}                                              % Annexes
+  ]
+
+%% Icelandic
+\setupeuropasslabeltext
+  [is]
+  [
+   cv:resume={Ferilskrá},                                                % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Síða},                                                       % Page
+   cv:eu={Evrópusambandið},                                              % European Union
+   cv:personalinformation={Persónulegar upplýsingar},                    % Personal Information
+   cv:jobappliedfor={Starf sem sótt er um},                              % Job Applied For
+   cv:workexperience={Starfsreynsla},                                    % Work Experience
+   cv:educationandtraining={Menntun og þjálfun},                         % Education and Training
+   cv:personalskills={Persónuleg hæfni},                                 % Personal Skills
+   cv:additionalinformation={Aðrar upplýsingar},                         % Additional Information
+   cv:annexes={Viðaukar}                                                 % Annexes
+  ]
+
+%% Italian
+\setupeuropasslabeltext
+  [it]
+  [
+   cv:resume={Curriculum vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Pagina},                                                     % Page
+   cv:eu={Unione europea},                                               % European Union
+   cv:personalinformation={Informazioni Personali},                      % Personal Information
+   cv:jobappliedfor={Occupazione desiderata},                            % Job Applied For
+   cv:workexperience={Esperienza Professionale},                         % Work Experience
+   cv:educationandtraining={Istruzione e formazione},                    % Education and Training
+   cv:personalskills={Competenze Personali},                             % Personal Skills
+   cv:additionalinformation={Ulteriori informazioni},                    % Additional Information
+   cv:annexes={Allegati}                                                 % Annexes
+  ]
+
+%% Lithuanian
+\setupeuropasslabeltext
+  [lt]
+  [
+   cv:resume={Gyvenimo aprašymas},                                       % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Puslapis},                                                   % Page
+   cv:eu={Europos Sąjunga},                                              % European Union
+   cv:personalinformation={Asmeninė informacija},                        % Personal Information
+   cv:jobappliedfor={Pageidaujamas darbas},                              % Job Applied For
+   cv:workexperience={Darbo patirtis},                                   % Work Experience
+   cv:educationandtraining={Išsilavinimas ir kvalifikacija},             % Education and Training
+   cv:personalskills={Asmeniniai gebėjimai},                             % Personal Skills
+   cv:additionalinformation={Papildoma informacija},                     % Additional Information
+   cv:annexes={Priedai}                                                  % Annexes
+  ]
+
+%% Latvian
+\setupeuropasslabeltext
+  [lv]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Lapa},                                                       % Page
+   cv:eu={Eiropas Savienība},                                            % European Union
+   cv:personalinformation={Personas dati},                               % Personal Information
+   cv:jobappliedfor={Vakance},                                           % Job Applied For
+   cv:workexperience={Darba pieredze},                                   % Work Experience
+   cv:educationandtraining={Izglītība},                                  % Education and Training
+   cv:personalskills={Prasmes},                                          % Personal Skills
+   cv:additionalinformation={Papildu informācija},                       % Additional Information
+   cv:annexes={Pielikumi}                                                % Annexes
+  ]
+
+%% Montenegrin
+\setupeuropasslabeltext
+  [me]
+  [
+   cv:resume={Biografija \endash CV},                                    % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Stranica},                                                   % Page
+   cv:eu={Europska unija},                                               % European Union
+   cv:personalinformation={Lične Informacije},                           % Personal Information
+   cv:jobappliedfor={Radno mjesto na koje se prijavljujete},             % Job Applied For
+   cv:workexperience={Radno iskustvo},                                   % Work Experience
+   cv:educationandtraining={Obrazovanje i osposobljavanje},              % Education and Training
+   cv:personalskills={Lične vještine i kompetencije},                    % Personal Skills
+   cv:additionalinformation={Dodatne informacije},                       % Additional Information
+   cv:annexes={Prilozi}                                                  % Annexes
+  ]
+
+%% Macedonian
+\setupeuropasslabeltext
+  [mk]
+  [
+   cv:resume={Кратка биографија},                                        % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Страна},                                                     % Page
+   cv:eu={Европска Унија},                                               % European Union
+   cv:personalinformation={Лични информации},                            % Personal Information
+   cv:jobappliedfor={Студии за кои аплицирате},                          % Job Applied For
+   cv:workexperience={Работно искуство},                                 % Work Experience
+   cv:educationandtraining={Образование и обука},                        % Education and Training
+   cv:personalskills={Лични вештини},                                    % Personal Skills
+   cv:additionalinformation={Дополнителни информации},                   % Additional Information
+   cv:annexes={Анекси}                                                   % Annexes
+  ]
+
+%% Maltese
+\setupeuropasslabeltext
+  [mt]
+  [
+   cv:resume={Curriculum vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Paġna},                                                      % Page
+   cv:eu={Unjoni Ewropea},                                               % European Union
+   cv:personalinformation={Informazzjoni Personali},                     % Personal Information
+   cv:jobappliedfor={L-impjieg li appllikajt għalih},                    % Job Applied For
+   cv:workexperience={Esperjenza tax-xogħol},                            % Work Experience
+   cv:educationandtraining={Edukazzjoni u taħriġ},                       % Education and Training
+   cv:personalskills={Ħiliet personali},                                 % Personal Skills
+   cv:additionalinformation={Informazzjoni Oħra},                        % Additional Information
+   cv:annexes={Annessi}                                                  % Annexes
+  ]
+
+%% Norsk
+\setupeuropasslabeltext
+  [nb]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Side},                                                       % Page
+   cv:eu={Den europeiske unionen},                                       % European Union
+   cv:personalinformation={Personlige opplysninger},                     % Personal Information
+   cv:jobappliedfor={Søkt stilling},                                     % Job Applied For
+   cv:workexperience={Arbeidserfaring},                                  % Work Experience
+   cv:educationandtraining={Utdanning og opplæring},                     % Education and Training
+   cv:personalskills={Personlig kompetanse},                             % Personal Skills
+   cv:additionalinformation={Andre opplysninger},                        % Additional Information
+   cv:annexes={Vedlegg}                                                  % Annexes
+  ]
+
+%% Dutch
+\setupeuropasslabeltext
+  [nl]
+  [
+   cv:resume={Curriculum vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Pagina},                                                     % Page
+   cv:eu={Europese Unie},                                                % European Union
+   cv:personalinformation={Persoonlijke informatie},                     % Personal Information
+   cv:jobappliedfor={Gewenste functie / werkterrein},                    % Job Applied For
+   cv:workexperience={Werkervaring},                                     % Work Experience
+   cv:educationandtraining={Onderwijs en opleiding},                     % Education and Training
+   cv:personalskills={Persoonlijke vaardigheden},                        % Personal Skills
+   cv:additionalinformation={Aanvullende informatie},                    % Additional Information
+   cv:annexes={Bijlagen}                                                 % Annexes
+  ]
+
+%% Polish
+\setupeuropasslabeltext
+  [pl]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Strona},                                                     % Page
+   cv:eu={Unia Europejska},                                              % European Union
+   cv:personalinformation={Informacje osobiste},                         % Personal Information
+   cv:jobappliedfor={Stanowisko o jakie się ubiegasz},                   % Job Applied For
+   cv:workexperience={Doświadczenie zawodowe},                           % Work Experience
+   cv:educationandtraining={Wykształcenie i odbyte szkolenia},           % Education and Training
+   cv:personalskills={Umiejętności},                                     % Personal Skills
+   cv:additionalinformation={Informacje dodatkowe},                      % Additional Information
+   cv:annexes={Załączniki}                                               % Annexes
+  ]
+
+%% Portuguese
+\setupeuropasslabeltext
+  [pt]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Página},                                                     % Page
+   cv:eu={União Europeia},                                               % European Union
+   cv:personalinformation={Informação Pessoal},                          % Personal Information
+   cv:jobappliedfor={Posto de trabalho a que se candidata},              % Job Applied For
+   cv:workexperience={Experiência Profissional},                         % Work Experience
+   cv:educationandtraining={Educação e Formação},                        % Education and Training
+   cv:personalskills={Competências pessoais},                            % Personal Skills
+   cv:additionalinformation={Informação adicional},                      % Additional Information
+   cv:annexes={Anexos}                                                   % Annexes
+  ]
+
+%% Romanian
+\setupeuropasslabeltext
+  [ro]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Pagina},                                                     % Page
+   cv:eu={Uniunea Europeană},                                            % European Union
+   cv:personalinformation={Informaţii Personale},                        % Personal Information
+   cv:jobappliedfor={Locul de muncă pentru care se candidează},          % Job Applied For
+   cv:workexperience={Experienţa profesională},                          % Work Experience
+   cv:educationandtraining={Educaţie şi formare},                        % Education and Training
+   cv:personalskills={Competente personale},                             % Personal Skills
+   cv:additionalinformation={Informaτii suplimentare},                   % Additional Information
+   cv:annexes={Anexe}                                                    % Annexes
+  ]
+
+%% Slovakian
+\setupeuropasslabeltext
+  [sk]
+  [
+   cv:resume={Životopis},                                                % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Strana},                                                     % Page
+   cv:eu={Európska únia},                                                % European Union
+   cv:personalinformation={Osobné údaje},                                % Personal Information
+   cv:jobappliedfor={Názov zamestnania, o ktoré sa uchádzate},           % Job Applied For
+   cv:workexperience={Prax}, % Vzdelávanie a príprava                    % Work Experience
+   cv:educationandtraining={Vzdelávanie a príprava},                     % Education and Training
+   cv:personalskills={Osobné zručnosti},                                 % Personal Skills
+   cv:additionalinformation={Doplňujúce informácie},                     % Additional Information
+   cv:annexes={Prílohy}                                                  % Annexes
+  ]
+
+%% Slovenian
+\setupeuropasslabeltext
+  [sl]
+  [
+   cv:resume={Curriculum vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,.,M,.,year"})}},             % Data
+   cv:page={Stran},                                                      % Page
+   cv:eu={Evropska unija},                                               % European Union
+   cv:personalinformation={Osebni podatki},                              % Personal Information
+   cv:jobappliedfor={Prijava na delovno mesto},                          % Job Applied For
+   cv:workexperience={Delovne izkušnje},                                 % Work Experience
+   cv:educationandtraining={Izobraževanje in usposabljanje},             % Education and Training
+   cv:personalskills={Kompetence},                                       % Personal Skills
+   cv:additionalinformation={Dodatni podatki},                           % Additional Information
+   cv:annexes={Priloge}                                                  % Annexes
+  ]
+
+%% Serbian
+\setupeuropasslabeltext
+  [sr]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Страница}, % Stranica                                        % Page
+   cv:eu={Европска унија}, % Evropska unija                              % European Union
+   cv:personalinformation={Личне информације}, % Lične informacije       % Personal Information
+   cv:jobappliedfor={Пријава за радно место}, % Prijava za radno mesto   % Job Applied For
+   cv:workexperience={Образовање и обуке}, % Radno iskustvo              % Work Experience
+   cv:educationandtraining={Радно искуство}, % Obrazovanje i obuke       % Education and Training
+   cv:personalskills={Личне вештине}, % Lične veštine                    % Personal Skills
+   cv:additionalinformation={Додатне информације}, % Dodatne informacije % Additional Information
+   cv:annexes={Прилози} % Prilozi                                        % Annexes
+  ]
+
+%% Swedish
+\setupeuropasslabeltext
+  [sv]
+  [
+   cv:resume={Meritförteckning},                                         % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Sida},                                                       % Page
+   cv:eu={Europeiska unionen},                                           % European Union
+   cv:personalinformation={Personlig Information},                       % Personal Information
+   cv:jobappliedfor={Sökt anställning},                                  % Job Applied For
+   cv:workexperience={Arbetslivserfarenhet},                             % Work Experience
+   cv:educationandtraining={Utbildning},                                 % Education and Training
+   cv:personalskills={Personliga färdigheter},                           % Personal Skills
+   cv:additionalinformation={Kompletterande information},                % Additional Information
+   cv:annexes={Bilagor}                                                  % Annexes
+  ]
+
+%% Turkish
+\setupeuropasslabeltext
+  [tr]
+  [
+   cv:resume={Özgeçmiş},                                                 % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Sayfa},                                                      % Page
+   cv:eu={Avrupa Birliği},                                               % European Union
+   cv:personalinformation={Kişisel Bilgiler},                            % Personal Information
+   cv:jobappliedfor={İş Deneyimi},                                       % Job Applied For
+   cv:workexperience={İş Deneyimi},                                      % Work Experience
+   cv:educationandtraining={Eğitim ve Öğretim},                          % Education and Training
+   cv:personalskills={Kişisel Becerilerini},                             % Personal Skills
+   cv:additionalinformation={İlave Bilgi},                               % Additional Information
+   cv:annexes={Ekler}                                                    % Annexes
+  ]
+
+%% British
+\setupeuropasslabeltext
+  [uk]
+  [
+   cv:resume={Curriculum Vitæ},                                          % Curriculum Vitæ
+   cv:date={\ctxlua{context.currentdate({"d,/,M,/,yy"})}},               % Date
+   cv:page={Page},                                                       % Page
+   cv:eu={European Union},                                               % European Union
+   cv:personalinformation={Personal Information},                        % Personal Information
+   cv:jobappliedfor={Job Applied For},                                   % Job Applied For
+   cv:workexperience={Work Experience},                                  % Work Experience
+   cv:educationandtraining={Education and Training},                     % Education and Training
+   cv:personalskills={Personal Skills},                                  % Personal Skills
+   cv:additionalinformation={Additional Information},                    % Additional Information
+   cv:annexes={Annexes}                                                  % Annexes
+  ]
 
 \stopenvironment

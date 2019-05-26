@@ -3,38 +3,38 @@
 % page layout
 \setuplayout
   [
-    width=135mm,
-    height=277mm,
-    header=20mm,
-    footer=20mm,
-    backspace=65mm,
-    cutspace=10mm,
-    topspace=10mm,
+          width=135mm,
+         height=277mm,
+         header=20mm,
+         footer=20mm,
+      backspace=65mm,
+       cutspace=10mm,
+       topspace=10mm,
     bottomspace=10mm,
-    leftmargin=60mm,
+     leftmargin=60mm,
     rightmargin=25mm
   ]
 
 \showframe
 
 % color palette
-\definecolor[europasscyan]     [c=0.90,m=0.28,y=0,k=0.20]
-\definecolor[europassdarkblue] [c=0.82,m=0.51,y=0,k=0.40]
-\definecolor[europassgray]     [c=0,m=0,y=0,k=0.22]
-\definecolor[europasslightgray][c=0,m=0,y=0,k=0.07]
-\definecolor[europassdarkgray] [c=0,m=0.08,y=0.11,k=0.75]
+\definecolor [europasscyan]      [c=0.90,m=0.28,y=0,k=0.20]
+\definecolor [europassdarkblue]  [c=0.82,m=0.51,y=0,k=0.40]
+\definecolor [europassgray]      [c=0,m=0,y=0,k=0.22]
+\definecolor [europasslightgray] [c=0,m=0,y=0,k=0.07]
+\definecolor [europassdarkgray]  [c=0,m=0.08,y=0.11,k=0.75]
 
 % units
-\definehspace[smallmedium][.75em]
-\definehspace[mediumbig][1.5em]
+\definehspace [smallmedium] [.75em]
+\definehspace [mediumbig]   [1.5em]
 
 % URL
-\useURL[europass][https://europass.cedefop.europa.eu][][https://europass.cedefop.europa.eu]
+\useURL [europass] [https://europass.cedefop.europa.eu] [] [https://europass.cedefop.europa.eu]
 
 % europass header
 \startsetups[headertext]
 \startframed[frame=off,offset=0mm,strut=no,align={right,lohi},location={top},height={\headerheight},width={\makeupwidth}]
-\startcolor[europasscyan] \europasstext{resume} \stopcolor
+\startcolor[europasscyan] \europasslabeltext{cv:resume} \stopcolor
 \stopframed
 \stopsetups
 
@@ -46,27 +46,27 @@
   \stopframed}
 \stopsetups
 
-\setupheadertexts[\directsetup{headertext}][\directsetup{headername}][\directsetup{headertext}][\directsetup{headername}]
+\setupheadertexts [\directsetup{headertext}] [\directsetup{headername}] [\directsetup{headertext}] [\directsetup{headername}]
 
 % europass footer
 \doifelse{\currentmoduleparameter{copyright}}{yes}
   {\startsetups[footertext]
-  \startcolor[europasscyan] \tfx © \europasstext{eu}, 2002\endash\currentdate[year] \| \from[europass] \stopcolor
+  \startcolor[europasscyan] \tfx © \europasslabeltext{cv:eu}, 2002\endash\currentdate[year] \| \from[europass] \stopcolor
   \stopsetups}
   {\startsetups[footertext]\stopsetups}
 \stopsetups
 
 \doifelse{\currentmoduleparameter{date}}{yes}
   {\startsetups[footerdate]
-  \startcolor[europasscyan] \hskip 6mm \tfx \europasstext{date} \hfill \stopcolor % \currentdate[d,{/},M,{/},yy]
+  \startcolor[europasscyan] \hskip 6mm \tfx \europasslabeltext{cv:date} \hfill \stopcolor % \currentdate[d,{/},M,{/},yy]
   \stopsetups}
   {\startsetups[footerdate]\stopsetups}
 
 \startsetups[footerpage]
-\startcolor[europasscyan] \tfx \europasstext{page} \currentpage\space/\space\totalnumberofpages \stopcolor
+\startcolor[europasscyan] \tfx \europasslabeltext{cv:page} \currentpage\space/\space\totalnumberofpages \stopcolor
 \stopsetups
 
-\setupfootertexts[\directsetup{footertext}][\directsetup{footerpage}][\directsetup{footerpage}][\directsetup{footertext}]
-\setupfootertexts[margin][\directsetup{footerdate}][]
+\setupfootertexts [\directsetup{footertext}] [\directsetup{footerpage}] [\directsetup{footerpage}] [\directsetup{footertext}]
+\setupfootertexts [margin] [\directsetup{footerdate}] []
 
 \stopenvironment

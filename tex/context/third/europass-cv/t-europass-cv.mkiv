@@ -1,6 +1,6 @@
 %D \module
 %D   [     file={t-europass-cv},
-%D      version={2019.03.31},
+%D      version={2019.05.31},
 %D        title={\CONTEXT\ User Module},
 %D     subtitle={European Curriculum Vitæ},
 %D       author={Adam Reviczky},
@@ -11,10 +11,10 @@
 %% http://wiki.contextgarden.net/Module_template
 
 % tracker messages
-\writestatus{loading}{ConTeXt Module | Europass: Curriculum Vitæ (2019.03.31)}
+\writestatus{loading}{ConTeXt Module | Europass: Curriculum Vitæ (2019.05.31)}
 \writestatus{europass}{interface: \currentlanguage}
-% https://tex.stackexchange.com/questions/367433/context-chapter-n-in-header-language-dependent
-%\writestatus{europass}{\ctxlua{context(languages.data.labels.texts["\currentlanguage"])}} % -- FIXME
+%% https://tex.stackexchange.com/questions/367433/context-chapter-n-in-header-language-dependent
+% \writestatus{europass}{\ctxlua{context(languages.data.labels.texts["\currentlanguage"])}} % -- FIXME
 
 \ctxloadluafile{t-europass-cv}{}
 
@@ -25,8 +25,8 @@
 \setupmodule
   [
        mainfont=heros,
-           date=yes,% -- yes/no
-      copyright=yes,% -- yes/no
+           date=yes, % -- yes/no
+      copyright=yes, % -- yes/no
         pdfname={First Last},
   ]
 
@@ -47,12 +47,11 @@
   ]
 
 % PDF 2.0
-\directlua{pdf.setmajorversion(2)}
-\directlua{pdf.setminorversion(0)}
+\directlua{lpdf.setversion(2,0)}
 
 % PDF properties
-% https://mailman.ntg.nl/pipermail/ntg-context/2016/086203.html
-\enabledirectives[interaction.identity.preroll]
+%% https://mailman.ntg.nl/pipermail/ntg-context/2016/086203.html
+\enabledirectives [interaction.identity.preroll]
 \setupinteraction
   [
            state=start,
@@ -66,27 +65,27 @@
   ]
 
 % PDF bookmarks
-\placebookmarks[title,subject][force=yes]
+\placebookmarks [title,subject] [force=yes]
 
 % default paramenters
-\mainlanguage[en]
-\setuppapersize[A4,portrait][A4,portrait]
+\mainlanguage [en]
+\setuppapersize [A4,portrait] [A4,portrait]
 \doifdefinedelse{\currentmoduleparameter{mainfont}}
   {\setupbodyfont[heros,ss]} % mscore
   {\setupbodyfont[\currentmoduleparameter{mainfont},ss]} % \moduleparameter{europass-cv}{mainfont}
 \switchtobodyfont[10pt] % \definebodyfontenvironment[10pt]
-\definefontfeature[default][default][protrusion=quality,expansion=quality]
-\setupalign[hz,hanging]
-\setuppagenumbering[location=]
+\definefontfeature [default] [default] [protrusion=quality,expansion=quality]
+\setupalign [hz,hanging]
+\setuppagenumbering [location=]
 
-\definestartstop[europasscv][before={\ \vskip-\lineheight},style=normal]
+\definestartstop [europasscv] [before={\ \vskip-\lineheight},style=normal]
 
 % environment products
 \environment t-europass-cv-style
 \environment t-europass-cv-lang
 
 % europass logo
-% https://www.mail-archive.com/ntg-context@ntg.nl/msg87012.html
+%% https://www.mail-archive.com/ntg-context@ntg.nl/msg87012.html
 % \doifdefined{\getvariable{europass}{logo}}{} -- FIXME
 \doifdefinedelse{\getvariable{europass}{logo}}
   {}
@@ -133,12 +132,12 @@ currentpicture := currentpicture ysized \MPvar{size};
   {\startframed[frame=off,offset=0mm,strut=no,align={right,lohi},loffset=10mm,boffset=1mm,location={top},height={\headerheight},width={\backspace}] \uniqueMPgraphic{logo}{size=8mm} \stopframed}
 \stopsetups
 
-\setupheadertexts[margin][\directsetup{headerlogo}][]
+\setupheadertexts [margin] [\directsetup{headerlogo}] []
 
 % europass bar -- LatinModernMath-Regular
 \def\europassbar{\dosingleempty\doeuropassbar}
 \long\def\doeuropassbar[#1] {%
-% -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
+%% https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
   \setuplocalinterlinespace[medium] % \setupinterlinespace[medium]
   \blank[halfline,force] % \vbox to \lineheight{}\blank[samepage, -halfline]
     \inmargin{\startcolor[europassdarkblue] \WORD{\tf #1} \stopcolor}
@@ -159,19 +158,45 @@ currentpicture := currentpicture ysized \MPvar{size};
 % europass line text
 \def\europasslinetext{\dodoubleempty\doeuropasslinetext}
 \long\def\doeuropasslinetext[#1][#2] {%
-% -- https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
+%% https://www.mail-archive.com/ntg-context@ntg.nl/msg83348.html
   \blank[halfline] % \vbox to \lineheight{}\blank[samepage, -halfline]
     \inmargin{\startcolor[europassdarkblue] {\tf #1} \stopcolor}
     {\startcolor[europassdarkgray] {#2} \stopcolor} \par
   \blank[line,force] % \blank[halfline,force]
 }
 
+%%% FIXME!!!
+%\definestartstop[europasscvtable][before={TABLEHEAD},style=normal]
+%%%
+
 % europass table text
 \def\europasstabletext{\dodoubleempty\doeuropasstabletext}
 \long\def\doeuropasstabletext[#1][#2] {%
   \blank[halfline]
     \inmargin{\startcolor[europassdarkblue] {\tf #1} \stopcolor}
-    {\startcolor[europassdarkgray] {#2} \stopcolor} \par
+
+%%% FIXME!!!
+%\blank[back,quarterline]
+%\ 
+%\ TEST
+%\blank[back,halfline]
+{\startcolor[europassdarkgray]
+\startembeddedxtable[option=stretch,align={middle,lohi},rulethickness=1pt,framecolor=europassgray]
+\startxrow
+\startxcell #2 \stopxcell
+\stopxrow
+\stopembeddedxtable
+\stopcolor} \par
+%\setbuffer[europasstable]
+%\startxtable[option=stretch,align={middle,lohi},rulethickness=1pt,framecolor=europassgray]
+%\startxrow
+%\startxcell #2 \stopxcell
+%\stopxrow
+%\stopxtable
+%\endbuffer
+%{\startcolor[europassdarkgray] \processxtablebuffer[europasstable] \stopcolor} \par
+%%%
+
   \blank[halfline]
 }
 
@@ -182,11 +207,11 @@ currentpicture := currentpicture ysized \MPvar{size};
     \ctxlua{userdata.setgkeyval('#1')}
   \fi
 
-  \europasslinetext [\tf\WORD{\europasstext{personal_information}}] [{\blank[back,halfline]\tfb{\getvariable{europass}{name}}}]
+  \europasslinetext [\tf\WORD{\europasslabeltext{cv:personalinformation}}] [{\blank[back,halfline]\tfb{\getvariable{europass}{name}}}]
 
   \blank[back,halfline]
 
-%% - FIXME!
+%%% FIXME!!!
   \startcolor[europassdarkgray]
 
   \blank[3*quarterline]
@@ -243,6 +268,8 @@ currentpicture := currentpicture ysized \MPvar{size};
          {\setupinteraction[color=europassdarkgray,contrastcolor=europassdarkgray]\goto{\getvariable{europass}{email}}[url(mailto:\getvariable{europass}{email})]}
   } \par
 
+%%% FIXME!!! - web metapost
+
   % Skype et al.
   \doifundefined{\getvariable{europass}{im}}{
        \tfx
@@ -250,15 +277,20 @@ currentpicture := currentpicture ysized \MPvar{size};
        \inframed[frame=on,offset=0mm,strut=no,location=low,height=0.36cm,width=0.38cm]%
          {\scale[width=0.30cm]{\uniqueMPgraphic{im}{size=1}}}
        \hspace[smallmedium]%
+%%% FIXME!!! - Skype tag
+       \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
+         {\startcolor[europasscyan] Skype \stopcolor}
        \inframed[frame=on,offset=0mm,strut=no,height=0.36cm]%
          {\setupinteraction[color=europassdarkgray,contrastcolor=europassdarkgray]\getvariable{europass}{im}}
   } \par
 
   \blank[halfline]
 
+%%% FIXME!!! - translations Sex/Date of Birth/Nationality
      \doifundefined
        {\getvariable{europass}{sex}}
        {\startcolor[europasscyan]Sex\space\stopcolor\Word{\getvariable{europass}{sex}}}
+%%% FIXME!!! - DoB into language specs
      \doifundefined
        {\getvariable{europass}{birth}}
        {\space\startcolor[europasscyan]\|\ Date of birth\stopcolor\space\date[d=\getvariable{europass:birth}{d},m=\getvariable{europass:birth}{m},y=\getvariable{europass:birth}{y}][dd,/,mm,/,year]}
@@ -266,10 +298,9 @@ currentpicture := currentpicture ysized \MPvar{size};
        {\getvariable{europass}{nationality}}
        {\space\startcolor[europasscyan]\|\ Nationality\stopcolor\space\Word{\getvariable{europass}{nationality}}}
 
-%% - FIXME!
+%%% FIXME!!!
 
-  \blank[line,force]
-  \vskip-.56em % adjust to \tfb
+  \blank[5*quarterline,force]
 
   \stopcolor
 } % -- Argument has an extra }
@@ -277,27 +308,27 @@ currentpicture := currentpicture ysized \MPvar{size};
 % europass job applied for
 \def\europassjob{\dosingleempty\doeuropassjob}
 \long\def\doeuropassjob[#1] {%
-  \europasslinetext[\WORD{\europasstext{job_applied_for}}][{\tfb #1}]
+  \europasslinetext[\WORD{\europasslabeltext{cv:jobappliedfor}}][{\tfb #1}]
 } % -- Argument has an extra }
 
 % europass work experience
-\long\def\europassexperience{\europassbar[\europasstext{work_experience}]
+\long\def\europassexperience{\europassbar[\europasslabeltext{cv:workexperience}]
 } % -- Argument has an extra }
 
 % europass education and training
-\long\def\europasseducation{\europassbar[\europasstext{education_and_training}]
+\long\def\europasseducation{\europassbar[\europasslabeltext{cv:educationandtraining}]
 } % -- Argument has an extra }
 
 % europass personal skills
-\long\def\europassskills{\europassbar[\europasstext{personal_skills}]
+\long\def\europassskills{\europassbar[\europasslabeltext{cv:personalskills}]
 } % -- Argument has an extra }
 
 % europass additional information
-\long\def\europassinformation{\europassbar[\europasstext{additional_information}]
+\long\def\europassinformation{\europassbar[\europasslabeltext{cv:additionalinformation}]
 } % -- Argument has an extra }
 
 % europass annexes
-\long\def\europassannex{\europassbar[\europasstext{annexes}]
+\long\def\europassannex{\europassbar[\europasslabeltext{cv:annexes}]
 } % -- Argument has an extra }
 
 \protect
