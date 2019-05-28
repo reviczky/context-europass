@@ -286,10 +286,10 @@ currentpicture := currentpicture ysized \MPvar{size};
 
   \blank[halfline]
 
-%%% FIXME!!! - translations Sex/Date of Birth/Nationality
+%%% FIXME!!! - translations Date of Birth/Nationality
      \doifundefined
        {\getvariable{europass}{sex}}
-       {\startcolor[europasscyan]Sex\space\stopcolor\Word{\getvariable{europass}{sex}}}
+       {\startcolor[europasscyan]\europasslabeltext{cv:sex}\space\stopcolor\Word{\getvariable{europass}{sex}}}
 %%% FIXME!!! - DoB into language specs
      \doifundefined
        {\getvariable{europass}{birth}}
