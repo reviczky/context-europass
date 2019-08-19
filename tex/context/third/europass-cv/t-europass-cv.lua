@@ -82,6 +82,13 @@ function userdata.setgkeyval(keyvals)
       elseif k == 'im'          then context.setvariables({'europass'},{'im=' .. '{' .. v  .. '}'})
       elseif k == 'sex'         then context.setvariables({'europass'},{'sex=' .. '{' .. v  .. '}'})
       elseif k == 'birth'       then context.setvariables({'europass'},{'birth=' .. '{' .. v  .. '}'})
+        local y = utilities.parsers.settings_to_hash(v)
+        for j,w in pairs(y) do
+          if     j == 'd'           then context.setvariables({'europass:birth'},{'d=' .. '{' .. w  .. '}'})
+          elseif j == 'm'           then context.setvariables({'europass:birth'},{'m=' .. '{' .. w  .. '}'})
+          elseif j == 'y'           then context.setvariables({'europass:birth'},{'y=' .. '{' .. w  .. '}'})
+          end
+        end
       elseif k == 'nationality' then context.setvariables({'europass'},{'nationality=' .. '{' .. v  .. '}'})
       end
     end
